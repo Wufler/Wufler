@@ -1,15 +1,19 @@
-### Hi there 👋
+### 👋 Hi there
 
 - 🔭 I’m currently working on HTML, CSS and JavaScript
+- 🌱 I’m currently studying at school
+- 📫 How to reach me: [wolfeybusiness@outlook.com](mailto:wolfeybusiness@outlook.com)
 
-![https://github.com/WoIfey](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=GitHub&logoColor=white)
+---
+
+### 🔗 Links
+
+[![github](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/WoIfey)
 
 <!--
-- 🌱 I’m currently studying programming at school
 - 👯 I’m looking to collaborate on ...
 - 🤔 I’m looking for help with ...
 - 💬 Ask me about ...
-- 📫 How to reach me: ...
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 <--
