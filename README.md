@@ -1,12 +1,10 @@
 # 👋 Hi there
 
----
-
 - 🔭 I’m currently working on HTML, CSS and JavaScript
 - 🌱 I’m currently studying at school
 - 📫 How to reach me: [wolfeybusiness@outlook.com](mailto:wolfeybusiness@outlook.com)
 
-### 🔗 Links
+## 🔗 Links
 
 ---
 
