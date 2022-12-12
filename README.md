@@ -1,6 +1,8 @@
 ### Hi there 👋
+
 - 🔭 I’m currently working on HTML, CSS and JavaScript
 
+![https://github.com/WoIfey](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=GitHub&logoColor=white)
 
 <!--
 - 🌱 I’m currently studying programming at school
