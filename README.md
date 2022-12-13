@@ -1,7 +1,8 @@
 # 👋 Hi there
 
-- 🎓 My name is Philip Huynh, a Web developer.
+- 🎓 My name is Philip Huynh, a Web developer
 - 🌱 Currently studying programming at school
+- 🏫 Expect a lot of school projects!
 - 📫 How to reach me: [wolfeybusiness@outlook.com](mailto:wolfeybusiness@outlook.com)
 
 ---
