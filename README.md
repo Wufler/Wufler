@@ -12,4 +12,4 @@
 
 ## 🔗 Links
 
-[![github](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/WoIfey) ![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FWoIfey&labelColor=%23000000&countColor=%23e34f26)
+[![github](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/WoIfey) ![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FWoIfey&labelColor=%23000000&countColor=%23ff8a65)
