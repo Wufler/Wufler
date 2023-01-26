@@ -3,7 +3,7 @@
 - 🎓 My name is Philip Huynh, a Web developer
 - 🌱 Currently studying programming at school
 - 🏫 Expect a lot of school projects!
-- 📫 How to reach me: [wolfeybusiness@outlook.com](mailto:wolfeybusiness@outlook.com)
+- 📫 How to reach me: [wolfey.bus@outlook.com](mailto:wolfey.bus@outlook.com)
 
 ---
 
@@ -13,4 +13,5 @@
 
 ## 🔗 Links
 
-[![github](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/WoIfey) ![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FWoIfey&labelColor=%23000000&countColor=%23ff8a65)
+[![github](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/WoIfey) 
+![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FWoIfey&labelColor=%23000000&countColor=%23ff8a65)
