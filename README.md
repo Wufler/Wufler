@@ -1,5 +1,5 @@
 <h1 align="center">👋 Hi there, I'm Philip Huynh</h1>
-<h3 align="center">A web developer from Finland.</h3>
+<h3 align="center">A web developer from 🇫🇮.</h3>
 
 - #### 🌱 Currently studying
   - Programming
@@ -11,11 +11,11 @@
 - #### 📫 How to reach me
   - [wolfey.bus@outlook.com](mailto:wolfey.bus@outlook.com)
 
-## 📚 Languages:
+## 📚 Languages
 
 ![Languages](https://skills.thijs.gg/icons?i=html,css,js,firebase,vite,react,tailwind)
 
-## 📊 GitHub Stats:
+## 📊 GitHub Stats
 
 <img align="left" src="https://github-readme-stats.vercel.app/api?username=WoIfey&theme=dark&hide_border=false" />
 
