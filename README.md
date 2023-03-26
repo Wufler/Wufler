@@ -1,17 +1,25 @@
-# 👋 Hi there
+<h1 align="center">👋 Hi there, I'm Philip Huynh</h1>
 
-- 🎓 My name is Philip Huynh, a Web developer
-- 🌱 Currently studying programming at school
-- 🏫 Expect a lot of school projects!
-- 📫 How to reach me: [wolfey.bus@outlook.com](mailto:wolfey.bus@outlook.com)
+- ##### 🌱 Currently studying
+  - Programming
+  - Web design
+  - React & JavaScript
+- ##### 🏫 Working on
+  - School Projects
+  - Personal Projects
+- ##### 📫 How to reach me
+  - [wolfey.bus@outlook.com](mailto:wolfey.bus@outlook.com)
 
----
+## 📚 Languages:
 
-## 📚 Languages
+![Languages](https://skills.thijs.gg/icons?i=html,css,js,firebase,vite,react,tailwind)
 
-![JavaScript](https://img.shields.io/badge/JavaScript-332c00?style=for-the-badge&logo=JavaScript) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3)
+## 📊 GitHub Stats:
 
-## 🔗 Links
+<img align="left" src="https://github-readme-stats.vercel.app/api?username=Woifey&theme=dark&hide_border=false&include_all_commits=true&count_private=false" />
 
-[![github](https://img.shields.io/badge/GitHub-000000?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/WoIfey) 
-![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FWoIfey&labelColor=%23000000&countColor=%23ff8a65)
+&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Woifey&theme=dark&hide_border=false&include_all_commits=true&count_private=false&layout=compact" />
+
+<br><br>
+
+![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FWoIfey&labelColor=%23000000&countColor=%23ff8a65) [![Portfolio](https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge)](http://woifey.github.io/)
