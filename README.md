@@ -17,8 +17,8 @@
 
 ## 📊 GitHub Stats
 
-<img align="left" src="https://github-readme-stats.vercel.app/api?username=WoIfey&theme=vision-friendly-dark&hide_border=false" />
+<img align="left" src="https://github-readme-stats.vercel.app/api?username=WoIfey&theme=vision-friendly-dark&hide_border=true" />
 
-&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Woifey&theme=vision-friendly-dark&hide_border=false&include_all_commits=true&count_private=false&layout=compact" />
+&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Woifey&theme=vision-friendly-dark&hide_border=true&include_all_commits=true&count_private=false&layout=compact" />
 
 &nbsp;![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FWoIfey&labelColor=%23000000&countColor=%23d69400)
