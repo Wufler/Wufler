@@ -1,19 +1,22 @@
 <h1 align="center">👋 Hi there, I'm Philip Huynh</h1>
 <h3 align="center">A web developer from 🇫🇮.</h3>
 
-- #### 🌱 Currently studying
+- #### 🌱 Currently Studying
   - Programming
-  - Web design
-  - React & JavaScript
+  - Web Design
+  - Next.js & TypeScript
 - #### 🏫 Working on
   - School Projects
   - Personal Projects
 - #### 📫 How to reach me
   - [wolfey.bus@outlook.com](mailto:wolfey.bus@outlook.com)
+  - woolfey on Discord
+- #### 👨‍🎓 Portfolio
+  - [Link to Website](https://woifey.github.io/)
 
 ## 📚 Languages
 
-![Languages](https://skills.thijs.gg/icons?i=html,css,js,tailwind,vite,react,firebase)
+![Languages](https://skills.thijs.gg/icons?i=html,css,js,ts,tailwind,firebase,vite,react,nextjs,postgres)
 
 ## 📊 GitHub Stats
 
