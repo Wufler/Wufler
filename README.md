@@ -12,7 +12,7 @@
   - [wolfey.bus@outlook.com](mailto:wolfey.bus@outlook.com)
   - woolfey on Discord
 - #### 👨‍🎓 Portfolio
-  - [Link to Website](https://woifey.github.io/)
+  - <a href="https://woifey.github.io/" target="_blank">Link to Website</a>
 
 ## 📚 Languages
 
