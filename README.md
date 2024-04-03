@@ -29,13 +29,13 @@
 
 <table>
 <tr>
-<td style="width: 33%;">
+<td style="width: 33.3%;">
 <img align="center" src="https://github-readme-stats.vercel.app/api?username=WoIfey&theme=vision-friendly-dark&hide_border=true" alt="GitHub Stats" />
 </td>
-<td style="width: 30%;">
+<td style="width: 33.4%;">
 <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Woifey&theme=vision-friendly-dark&hide_border=true&include_all_commits=true&count_private=false&layout=compact" alt="Most Used Languages" />
 </td>
-<td style="width: 33%;">
+<td style="width: 33.3%;">
 <img align="center" src="https://streak-stats.demolab.com?user=woifey&theme=dark" alt="GitHub Streak" />
 </td>
 </tr>
