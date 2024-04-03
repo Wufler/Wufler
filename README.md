@@ -1,6 +1,6 @@
 <h1 align="center">👋 Hi there, I'm Philip Huynh (@WoIfey)</h1>
 
-### Full-stack web developer from 🇫🇮.
+### 👨‍💻 Full-stack web developer from 🇫🇮.
 
 - #### 🌱 Currently Studying
   - Programming
@@ -15,7 +15,7 @@
 - #### 👨‍🎓 Portfolio
   - <a href="https://woifey.vercel.app/" target="_blank">Link to Website</a>
 
-## 📚 Languages
+## 🌐 Languages
 
 ![Languages](https://skills.thijs.gg/icons?i=html,css,tailwind,js,ts)
 
@@ -23,7 +23,7 @@
 
 ![Languages](https://skills.thijs.gg/icons?i=vite,react,nextjs)
 
-## 👨‍💻 Databases
+## 📦 Databases
 
 ![Languages](https://skills.thijs.gg/icons?i=firebase,postgres)
 
@@ -36,7 +36,7 @@
 <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Woifey&theme=vision-friendly-dark&hide_border=true&include_all_commits=true&count_private=false&layout=compact" alt="Most Used Languages" />
 </td>
 <td style="width: 33.3%;">
-<img align="center" src="https://streak-stats.demolab.com?user=woifey&theme=dark" alt="GitHub Streak" />
+<img align="center" src="https://streak-stats.demolab.com?user=woifey&theme=highcontrast&hide_border=true&card_width=485" alt="GitHub Streak" />
 </td>
 </tr>
 </table>
