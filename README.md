@@ -12,11 +12,19 @@
   - [wolfey.bus@outlook.com](mailto:wolfey.bus@outlook.com)
   - woolfey on Discord
 - #### 👨‍🎓 Portfolio
-  - <a href="https://woifey.github.io/" target="_blank">Link to Website</a>
+  - <a href="https://woifey.vercel.app/" target="_blank">Link to Website</a>
 
 ## 📚 Languages
 
-![Languages](https://skills.thijs.gg/icons?i=html,css,js,ts,tailwind,firebase,vite,react,nextjs,postgres)
+![Languages](https://skills.thijs.gg/icons?i=html,css,tailwind,js,ts)
+
+## 🛠️ Frameworks
+
+![Languages](https://skills.thijs.gg/icons?i=vite,react,nextjs)
+
+## 👨‍💻 Databases
+
+![Languages](https://skills.thijs.gg/icons?i=firebase,postgres)
 
 ## 📊 GitHub Stats
 
