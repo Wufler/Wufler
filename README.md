@@ -1,6 +1,6 @@
-<h1 align="center">👋 Hi there, I'm Philip Huynh</h1>
+<h1 align="center">👋 Hi there, I'm Philip Huynh (@WoIfey)</h1>
 
-#### Full-stack web developer from 🇫🇮.
+### Full-stack web developer from 🇫🇮.
 
 - #### 🌱 Currently Studying
   - Programming
