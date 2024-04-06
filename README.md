@@ -1,6 +1,6 @@
 <h1 align="center">👋 Hi there, I'm Philip Huynh (@WoIfey)</h1>
 
-### 👨‍💻 Full-stack web developer from 🇫🇮.
+## 👨‍💻 Full-stack web developer from 🇫🇮.
 
 - #### 🌱 Currently Studying
   - Programming
@@ -17,27 +17,35 @@
 
 ## 🌐 Languages
 
-![Languages](https://skills.thijs.gg/icons?i=html,css,tailwind,js,ts)
+![Languages](https://skills.thijs.gg/icons?i=html,css,js,ts)
 
 ## 🛠️ Frameworks
 
-![Languages](https://skills.thijs.gg/icons?i=vite,react,nextjs)
+![Languages](https://skills.thijs.gg/icons?i=tailwind,vite,react,nextjs)
 
 ## 📦 Databases
 
 ![Languages](https://skills.thijs.gg/icons?i=firebase,postgres)
 
+## 📊 GitHub Stats
+
 <table>
 <tr>
-<td style="width: 33.3%;">
-<img align="center" src="https://github-readme-stats.vercel.app/api?username=WoIfey&theme=vision-friendly-dark&hide_border=true" alt="GitHub Stats" />
+<td>
+<img src="https://github-readme-stats.vercel.app/api?username=WoIfey&theme=vision-friendly-dark&hide_border=true" alt="GitHub Stats" />
 </td>
-<td style="width: 33.4%;">
-<img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Woifey&theme=vision-friendly-dark&hide_border=true&include_all_commits=true&count_private=false&layout=compact" alt="Most Used Languages" />
-</td>
-<td style="width: 33.3%;">
-<img align="center" src="https://streak-stats.demolab.com?user=woifey&theme=highcontrast&hide_border=true&card_width=485" alt="GitHub Streak" />
+<td>
+<img src="https://streak-stats.demolab.com?user=woifey&theme=highcontrast&hide_border=true&card_width=485" alt="GitHub Streak" />
 </td>
 </tr>
 </table>
-<img src="https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2FWoIfey&labelColor=%23000000&countColor=%23d69400" />
+<table>
+<tr>
+<td>
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Woifey&theme=vision-friendly-dark&hide_border=true&include_all_commits=true&count_private=false&layout=compact" alt="Most Used Languages" />
+</td>
+<td style="width: 100%; display: flex; justify-content: center; align-items: center;">
+<img alt="Visitors" src="https://widgetbite.com/stats/WoIfey"/>
+</td>
+</tr>
+</table>
