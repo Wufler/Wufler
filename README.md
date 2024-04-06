@@ -1,9 +1,9 @@
 <h1 align="center">👋 Hi there, I'm Philip Huynh (@WoIfey)</h1>
 
-## 👨‍💻 Full-stack web developer from 🇫🇮.
+### 👨‍💻 Full-stack web developer from 🇫🇮.
 
 - #### 🌱 Currently Studying
-  - Programming
+  - Full-stack Programming
   - Web Design
   - Next.js & TypeScript
 - #### 🏫 Working on
@@ -44,8 +44,8 @@
 <td>
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Woifey&theme=vision-friendly-dark&hide_border=true&include_all_commits=true&count_private=false&layout=compact" alt="Most Used Languages" />
 </td>
-<td style="width: 100%; display: flex; justify-content: center; align-items: center;">
-<img alt="Visitors" src="https://widgetbite.com/stats/WoIfey"/>
+<td>
+<img src="https://widgetbite.com/stats/WoIfey" alt="Visitors" />
 </td>
 </tr>
 </table>
