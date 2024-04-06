@@ -15,15 +15,15 @@
 - #### 👨‍🎓 Portfolio
   - <a href="https://woifey.vercel.app/" target="_blank">Link to Website</a>
 
-## 🌐 Languages
+### 🌐 Languages
 
 ![Languages](https://skills.thijs.gg/icons?i=html,css,js,ts)
 
-## 🛠️ Frameworks
+### 🛠️ Frameworks
 
 ![Languages](https://skills.thijs.gg/icons?i=tailwind,vite,react,nextjs)
 
-## 📦 Databases
+### 📦 Databases
 
 ![Languages](https://skills.thijs.gg/icons?i=firebase,postgres)
 
