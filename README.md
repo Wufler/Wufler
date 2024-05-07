@@ -4,8 +4,8 @@
 
 - #### 🌱 Currently Studying
   - Full-stack Programming
-  - Web Design
   - Next.js & TypeScript
+  - Web Design
 - #### 🏫 Working on
   - School Projects
   - Personal Projects
@@ -13,19 +13,19 @@
   - [wolfey.bus@outlook.com](mailto:wolfey.bus@outlook.com)
   - woolfey on Discord
 - #### 👨‍🎓 Portfolio
-  - <a href="https://woifey.vercel.app/" target="_blank">Link to Website</a>
+  - <a href="https://woifey.vercel.app/" target="_blank">Link to Portfolio</a>
 
 ### 🌐 Languages
 
-![Languages](https://skills.thijs.gg/icons?i=html,css,js,ts)
+![HTML, CSS, JavaScript, TypeScript](https://skills.thijs.gg/icons?i=html,css,js,ts)
 
 ### 🛠️ Frameworks
 
-![Languages](https://skills.thijs.gg/icons?i=tailwind,vite,react,nextjs)
+![Tailwind CSS, Vite, React, Next.js, Vercel](https://skills.thijs.gg/icons?i=tailwind,vite,react,nextjs,vercel)
 
 ### 📦 Databases
 
-![Languages](https://skills.thijs.gg/icons?i=firebase,postgres)
+![Firebase, Supabase, Aiven, PostgreSQL](https://skills.thijs.gg/icons?i=firebase,supabase,postgres)
 
 ## 📊 GitHub Stats
 
