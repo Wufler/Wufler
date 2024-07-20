@@ -1,4 +1,4 @@
-<h1 align="center">👋 Hi there, I'm Philip Huynh (@WoIfey)</h1>
+<h1 align="center">👋 Hi there, I'm Philip Huynh</h1>
 
 ### 👨‍💻 Full-stack web developer from 🇫🇮.
 
@@ -6,9 +6,6 @@
   - Full-stack Programming
   - Next.js & TypeScript
   - Web Design
-- #### 🏫 Working on
-  - School Projects
-  - Personal Projects
 - #### 📫 How to reach me
   - [wolfey.bus@outlook.com](mailto:wolfey.bus@outlook.com)
   - woolfey on Discord
@@ -17,18 +14,18 @@
 
 ### 🌐 Languages
 
-![HTML, CSS, JavaScript, TypeScript](https://skills.thijs.gg/icons?i=html,css,js,ts)
+[![HTML, CSS, JavaScript, TypeScript](https://skillicons.dev/icons?i=html,css,js,ts)](https://skillicons.dev)
 
 ### 🛠️ Frameworks
 
-![Tailwind CSS, Vite, React, Next.js, Vercel](https://skills.thijs.gg/icons?i=tailwind,vite,react,nextjs,vercel)
+[![Tailwind CSS, Vite, React, Next.js, Vercel](https://skillicons.dev/icons?i=tailwind,vite,react,nextjs,vercel)](https://skillicons.dev)
 
 ### 📦 Databases
 
-![Firebase, Supabase, Aiven, PostgreSQL](https://skills.thijs.gg/icons?i=firebase,supabase,postgres)
+[![Firebase, Supabase, Aiven, PostgreSQL](https://skillicons.dev/icons?i=firebase,supabase,postgres)](https://skillicons.dev)
 
-## 📊 GitHub Stats
-
+<details>
+<summary>📊 GitHub Stats</summary>
 <table>
 <tr>
 <td>
@@ -49,3 +46,4 @@
 </td>
 </tr>
 </table>
+</details>
