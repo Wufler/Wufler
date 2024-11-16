@@ -2,7 +2,7 @@
 
 # 👋 Hi there, I'm Philip Huynh
 
-### Full-stack web developer from 🇫🇮 Finland
+### 🦊 Full-stack web developer from 🇫🇮 Finland
 
 </div>
 
@@ -46,7 +46,7 @@ As a software developer student, I'm passionate about creating innovative and us
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Woifey&theme=vision-friendly-dark&hide_border=true&include_all_commits=true&count_private=false&layout=compact" alt="Top Languages" />
 </td>
 <td>
-<!-- <img src="https://widgetbite.com/stats/WoIfey" alt="Visitors" /> -->
+<img src="https://widgetbite.com/stats/WoIfey" alt="Visitors" />
 </td>
 </tr>
 </table>
