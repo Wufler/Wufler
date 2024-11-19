@@ -7,7 +7,9 @@
 </div>
 
 <div align="center">
-<p style="padding-left:20px;padding-right:20px;">As a software developer student, I'm passionate about creating innovative and user-friendly web applications. I am driven by curiosity and want to continue learning and improving.</p>
+
+I'm a software development student with a passion for building creative and user-friendly web applications. I always try to explore new technologies, improve my skills and stay updated with the latest trends. I'm dedicated to continuous learning and always looking for ways to improve and grow as a developer.
+
 </div>
 
 <div align="center">
@@ -28,23 +30,29 @@
 
 <details>
 <summary>📊 GitHub Stats</summary>
-<table style="padding-top:20px;">
+<table>
 <tr>
 <td>
-<img src="https://github-readme-stats.vercel.app/api?username=WoIfey&theme=vision-friendly-dark&hide_border=true&show_icons=true" alt="GitHub Stats" />
+
+![WoIfey's Stats](https://github-readme-stats.vercel.app/api?username=WoIfey&theme=slateorange&show_icons=true&hide_border=true&count_private=true)
+
 </td>
 <td>
-<img src="https://streak-stats.demolab.com?user=woifey&theme=highcontrast&hide_border=true&card_width=485" alt="GitHub Streak" />
+
+![WoIfey's Streak](https://github-readme-streak-stats.herokuapp.com/?user=WoIfey&theme=slateorange&hide_border=true)
+
 </td>
 </tr>
 </table>
 <table>
 <tr>
 <td>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Woifey&theme=vision-friendly-dark&hide_border=true&include_all_commits=true&count_private=false&layout=compact" alt="Top Languages" />
+
+![WoIfey's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=WoIfey&theme=slateorange&show_icons=true&hide_border=true&layout=compact)
+
 </td>
 <td>
-<!-- <img src="https://widgetbite.com/stats/WoIfey" alt="Visitors" /> -->
+<img src="https://widgetbite.com/stats/WoIfey" alt="Visitors" />
 </td>
 </tr>
 </table>
