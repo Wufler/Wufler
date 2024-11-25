@@ -1,6 +1,6 @@
 <div align="center">
 
-# 👋 Hi there, I'm Philip Huynh
+# 👋 I'm Philip Huynh
 
 ### 🦊 Full-stack web developer from 🇫🇮 Finland
 
@@ -8,7 +8,7 @@
 
 <div align="center">
 
-👨‍💻 Software development student who loves creating fun and user-friendly websites! 🚀 Always exploring new tech and learning new things to become a better developer.
+👨‍💻 Software development student who loves creating fun and user-friendly websites! <br>🚀 Always exploring new tech and learning new things to become a better developer.
 
 ### 🔨 Currently building with:
 
