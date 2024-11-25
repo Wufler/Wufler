@@ -12,7 +12,7 @@
 
 ### 🔨 Currently building with:
 
-Next.js with shadcn/ui<br>
+Next.js and shadcn/ui<br>
 Prisma with postgreSQL<br>
 Vercel for deployment
 
