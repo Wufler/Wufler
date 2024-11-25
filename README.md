@@ -12,9 +12,9 @@
 
 ### 🔨 Currently building with:
 
-- Next.js with shadcn/ui
-- Prisma with postgreSQL
-- Vercel for deployment
+Next.js with shadcn/ui<br>
+Prisma with postgreSQL<br>
+Vercel for deployment
 
 ⬇️ Check out my latest projects!
 
