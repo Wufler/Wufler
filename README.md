@@ -8,7 +8,15 @@
 
 <div align="center">
 
-I'm a software development student with a passion for building creative and user-friendly web applications. I always try to explore new technologies, improve my skills and stay updated with the latest trends. I'm dedicated to continuous learning and always looking for ways to improve and grow as a developer.
+👨‍💻 Software development student who loves creating fun and user-friendly websites! 🚀 Always exploring new tech and learning new things to become a better developer.
+
+### 🔨 Currently building with:
+
+- Next.js with shadcn/ui
+- Prisma with postgreSQL
+- Vercel for deployment
+
+⬇️ Check out my latest projects!
 
 </div>
 
