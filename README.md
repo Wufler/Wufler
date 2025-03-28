@@ -22,9 +22,9 @@ Vercel for deployment
 
 <div align="center">
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=firefox)](https://wolfey.uk/)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=firefox)](https://wolfey.me/)
 ![Discord](https://img.shields.io/badge/woolfey-7289DA?style=for-the-badge&logo=Discord&logoColor=white)
-[![Email](https://img.shields.io/badge/Email-D44638?style=for-the-badge&logo=gmail&logoColor=white)](mailto:wolfey.bus@gmail.com)
+[![Email](https://img.shields.io/badge/Email-D44638?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hi@wolfey.me)
 
 </div>
 
@@ -47,7 +47,7 @@ Vercel for deployment
 </td>
 <td>
 
-![WoIfey's Streak](https://github-readme-streak-stats.herokuapp.com/?user=WoIfey&theme=slateorange&hide_border=true)
+![WoIfey's Streak](https://gitstreak.wolfey.me/?user=WoIfey&theme=slateorange&hide_border=true)
 
 </td>
 </tr>
