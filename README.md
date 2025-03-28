@@ -38,6 +38,7 @@ Vercel for deployment
 
 <details>
 <summary>📊 GitHub Stats</summary>
+<br />
 <table>
 <tr>
 <td>
@@ -59,11 +60,10 @@ Vercel for deployment
 ![WoIfey's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=WoIfey&theme=slateorange&show_icons=true&hide_border=true&layout=compact)
 
 </td>
-<td>
-<img src="https://widgetbite.com/stats/WoIfey" alt="Visitors" />
-</td>
 </tr>
 </table>
-</details>
 
+![Visitors](https://img.shields.io/endpoint?url=https://yasinkalkan.com/api/githubvisitorstats/track/?user=WoIfey&color=orange&label=Visitors)
+
+</details>
 </div>
