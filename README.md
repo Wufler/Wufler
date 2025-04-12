@@ -63,7 +63,5 @@ Vercel for deployment
 </tr>
 </table>
 
-![Visitors](https://img.shields.io/endpoint?url=https://yasinkalkan.com/api/githubvisitorstats/track/?user=WoIfey&color=orange&label=Visitors)
-
 </details>
 </div>
