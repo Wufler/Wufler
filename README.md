@@ -8,7 +8,7 @@
 
 <div align="center">
 
-👨‍💻 Software development student who loves creating fun and user-friendly websites! <br>🚀 Always exploring new tech and learning new things to become a better developer.
+👨‍💻 I create fun and user-friendly websites! <br>🚀 Always exploring new tech and learning new things to become a better developer.
 
 ### 🔨 Currently building with:
 
@@ -43,12 +43,12 @@ Vercel for deployment
 <tr>
 <td>
 
-![WoIfey's Stats](https://github-readme-stats.vercel.app/api?username=WoIfey&theme=slateorange&show_icons=true&hide_border=true&count_private=true)
+![WoIfey's Stats](https://github-readme-stats.vercel.app/api?username=Wufler&theme=slateorange&show_icons=true&hide_border=true&count_private=true)
 
 </td>
 <td>
 
-![WoIfey's Streak](https://gitstreak.wolfey.me/?user=WoIfey&theme=slateorange&hide_border=true)
+![WoIfey's Streak](https://gitstreak.wolfey.me/?user=Wufler&theme=slateorange&hide_border=true)
 
 </td>
 </tr>
@@ -57,7 +57,7 @@ Vercel for deployment
 <tr>
 <td>
 
-![WoIfey's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=WoIfey&theme=slateorange&show_icons=true&hide_border=true&layout=compact)
+![WoIfey's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Wufler&theme=slateorange&show_icons=true&hide_border=true&layout=compact)
 
 </td>
 </tr>
