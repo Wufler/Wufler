@@ -43,12 +43,12 @@ Vercel for deployment
 <tr>
 <td>
 
-![WoIfey's Stats](https://github-readme-stats.vercel.app/api?username=Wufler&theme=slateorange&show_icons=true&hide_border=true&count_private=true)
+![Wolfey's Stats](https://github-readme-stats.vercel.app/api?username=Wufler&theme=slateorange&show_icons=true&hide_border=true&count_private=true)
 
 </td>
 <td>
 
-![WoIfey's Streak](https://gitstreak.wolfey.me/?user=Wufler&theme=slateorange&hide_border=true)
+![Wolfey's Streak](https://gitstreak.wolfey.me/?user=Wufler&theme=slateorange&hide_border=true)
 
 </td>
 </tr>
@@ -57,7 +57,7 @@ Vercel for deployment
 <tr>
 <td>
 
-![WoIfey's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Wufler&theme=slateorange&show_icons=true&hide_border=true&layout=compact)
+![Wolfey's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Wufler&theme=slateorange&show_icons=true&hide_border=true&layout=compact)
 
 </td>
 </tr>
