@@ -5,7 +5,7 @@
 <td>
 <samp>🚀 I create websites where users will probably have fun with, and always learn new things and tech.</samp>
         
-<br>
+<br><br>
 
 <samp>⬇️ <strong>Check out</strong> my latest projects!</samp>
 
@@ -17,9 +17,9 @@
 
 <td>
 
-[![html,css,js,ts,tailwind,vite,react,nextjs,vercel,postgres,prisma](https://skillicons.dev/icons?i=html,css,js,ts,tailwind,vite,react,nextjs,vercel,postgres,prisma&perline=6)](https://skillicons.dev)
-
 <samp><strong>🔨 Currently building with:</strong> Next.js, shadcn/ui, Neon, Prisma, better-auth and Vercel</samp>
+
+[![html,css,js,ts,tailwind,vite,react,nextjs,vercel,postgres,prisma](https://skillicons.dev/icons?i=html,css,js,ts,tailwind,vite,react,nextjs,vercel,postgres,prisma&perline=6)](https://skillicons.dev)
 
 </td>
 </tr>
@@ -38,15 +38,6 @@
 <td>
 
 ![Wolfey's Streak](https://gitstreak.wolfey.me/?user=Wufler&theme=slateorange&hide_border=true)
-
-</td>
-</tr>
-</table>
-<table>
-<tr>
-<td>
-
-![Wolfey's Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Wufler&theme=slateorange&show_icons=true&hide_border=true&layout=compact)
 
 </td>
 </tr>
