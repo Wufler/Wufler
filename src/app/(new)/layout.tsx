@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Quicksand } from 'next/font/google'
 import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
+import { Analytics } from '@vercel/analytics/next'
 
 const quicksand = Quicksand({
 	weight: ['400', '700'],
@@ -41,6 +42,7 @@ export default function RootLayout({
 			<body className={quicksand.variable}>
 				{children}
 				<Toaster position="bottom-left" />
+				<Analytics />
 			</body>
 		</html>
 	)
