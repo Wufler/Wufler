@@ -21,13 +21,13 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "Wolfey's Portfolio",
 		description: 'Check out my stuff!',
-		url: 'https://woifey.vercel.app',
+		url: 'https://wufler.vercel.app',
 		images: [
 			{
 				url: 'https://wolfey.s-ul.eu/zx1Ow0k4',
 				width: 1280,
 				height: 720,
-				alt: 'Thumbnail',
+				alt: 'Wolfey',
 			},
 		],
 		locale: 'en_US',

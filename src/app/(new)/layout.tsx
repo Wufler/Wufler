@@ -3,6 +3,7 @@ import { Quicksand } from 'next/font/google'
 import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const quicksand = Quicksand({
 	weight: ['400', '700'],
@@ -13,17 +14,17 @@ const quicksand = Quicksand({
 
 export const metadata: Metadata = {
 	title: "Wolfey's Portfolio",
-	description: "Wolfey's Portfolio made with Next.js",
+	description: 'Web developer that makes various stuff.',
 	openGraph: {
 		title: "Wolfey's Portfolio",
-		description: 'Check out my stuff!',
-		url: 'https://woifey.vercel.app',
+		description: 'Web developer that makes various stuff.',
+		url: 'https://wufler.vercel.app',
 		images: [
 			{
-				url: 'https://wolfey.s-ul.eu/zx1Ow0k4',
+				url: 'https://wolfey.s-ul.eu/qBXULLBu',
 				width: 1280,
 				height: 720,
-				alt: 'Thumbnail',
+				alt: 'silly fox with tongue out',
 			},
 		],
 		locale: 'en_US',
@@ -43,6 +44,7 @@ export default function RootLayout({
 				{children}
 				<Toaster position="bottom-left" />
 				<Analytics />
+				<SpeedInsights />
 			</body>
 		</html>
 	)
