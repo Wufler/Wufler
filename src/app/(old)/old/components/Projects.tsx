@@ -35,14 +35,15 @@ export default function Projects({ projects }: { projects: Project[] }) {
 		<div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 pb-4 pt-32 sm:pt-36 md:pb-0 source overflow-y-auto overflow-x-hidden xl:px-4">
 			{projects.map((project: Project, index: number) => (
 				<React.Fragment key={project.id}>
-					{!index || project.category !== projects[index - 1].category ? (
-						<div className="col-span-1 lg:col-span-2 2xl:col-span-3 sm:px-6 2xl:px-2 px-6">
-							<div className="flex w-full items-center space-x-4">
-								<p className="text-xl">{project.category}</p>
-								<div className="flex-1 border-b-2 rounded-xl border-gray-400"></div>
+					{(!index || project.category !== projects[index - 1].category) &&
+						projects.some(p => p.category === project.category && p.visible) && (
+							<div className="col-span-1 lg:col-span-2 2xl:col-span-3 sm:px-6 2xl:px-2 px-6">
+								<div className="flex w-full items-center space-x-4">
+									<p className="text-xl">{project.category}</p>
+									<div className="flex-1 border-b-2 rounded-xl border-gray-400"></div>
+								</div>
 							</div>
-						</div>
-					) : null}
+						)}
 					{project.visible && (
 						<div className="group h-[170px] sm:h-[250px] md:h-[170px] mx-8 my-8 transition-all duration-200 ease-in-out transform hover:scale-105 hover:px-4 hover:py-6 mb-12 md:mb-8">
 							<div className="flex items-center gap-2 break-all truncate max-w-72 text-xl md:text-2xl mb-1.5 text-center uppercase absolute group-hover:top-4 group-hover:left-0 group-hover:text-black -top-4 left-4 transition-all ease-in-out duration-200">

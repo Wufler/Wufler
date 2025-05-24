@@ -2,9 +2,59 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'motion/react'
-import { ArrowLeft, ArrowRight, Maximize, Minimize, X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Maximize, Minimize, Tag, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
+import {
+	HTML5,
+	TypeScript,
+	ReactIcon,
+	Nextjs,
+	TailwindCSS,
+	PostgreSQL,
+	Prisma,
+	CSSNew,
+	JavaScript,
+	ShadcnUI,
+	Nodejs,
+	Neon,
+	Git,
+	GitHub,
+	Vercel,
+	NPM,
+	PNPM,
+	Motion,
+	Docker,
+	BetterAuth,
+} from '@/components/ui/icons'
+
+const getTagIcon = (name: string) => {
+	const tag = name.toLowerCase()
+	if (tag.includes('next') || tag.includes('next.js')) return <Nextjs />
+	if (tag.includes('react')) return <ReactIcon />
+	if (tag.includes('css')) return <CSSNew />
+	if (tag.includes('html')) return <HTML5 />
+	if (tag.includes('typescript') || tag.includes('ts')) return <TypeScript />
+	if (tag.includes('javascript') || tag.includes('js')) return <JavaScript />
+	if (tag.includes('tailwind')) return <TailwindCSS />
+	if (tag.includes('node') || tag.includes('nodejs')) return <Nodejs />
+	if (tag.includes('postgres') || tag.includes('postgresql'))
+		return <PostgreSQL />
+	if (tag.includes('prisma')) return <Prisma />
+	if (tag.includes('docker')) return <Docker />
+	if (tag.includes('git')) return <Git />
+	if (tag.includes('github')) return <GitHub />
+	if (tag.includes('vercel')) return <Vercel />
+	if (tag.includes('motion')) return <Motion />
+	if (tag.includes('betterauth')) return <BetterAuth />
+	if (tag.includes('html')) return <HTML5 />
+	if (tag.includes('npm')) return <NPM />
+	if (tag.includes('pnpm')) return <PNPM />
+	if (tag.includes('neon')) return <Neon />
+	if (tag.includes('shadcn')) return <ShadcnUI />
+
+	return <Tag />
+}
 
 export default function Projects({
 	projects,
@@ -61,7 +111,11 @@ export default function Projects({
 		return () => window.removeEventListener('resize', handleResize)
 	}, [localFullscreen, onFullscreenChange])
 
-	const categories = [...new Set(projects.map(project => project.category))]
+	const categories = [
+		...new Set(projects.map(project => project.category)),
+	].filter(category =>
+		projects.some(project => project.category === category && project.visible)
+	)
 	const pages = categories.map(category => {
 		const categoryProjects = projects.filter(
 			project => project.category === category && project.visible
@@ -130,12 +184,13 @@ export default function Projects({
 											</div>
 										)}
 										<div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-											<div className="flex flex-wrap gap-2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+											<div className="flex flex-wrap-reverse gap-2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
 												{project.tags.map((tag, i) => (
 													<span
 														key={i}
-														className="bg-[#dfc931] text-black text-xs font-semibold px-2 py-1 rounded-full"
+														className="bg-[#b68832] text-black text-xs font-semibold px-2 py-1 rounded-full flex items-center gap-1"
 													>
+														<span className="text-xs">{getTagIcon(tag)}</span>
 														{tag}
 													</span>
 												))}
@@ -350,12 +405,13 @@ export default function Projects({
 																								</div>
 																							)}
 																							<div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-																								<div className="flex flex-wrap gap-2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+																								<div className="flex flex-wrap-reverse gap-2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
 																									{project.tags.map((tag, i) => (
 																										<span
 																											key={i}
-																											className="bg-[#dfc931] text-black text-xs font-semibold px-2 py-1 rounded-full"
+																											className="bg-[#b68832] text-black text-xs font-semibold px-2 py-1 rounded-full flex items-center gap-1"
 																										>
+																											<span className="text-xs">{getTagIcon(tag)}</span>
 																											{tag}
 																										</span>
 																									))}
@@ -582,12 +638,13 @@ export default function Projects({
 																								</div>
 																							)}
 																							<div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-																								<div className="flex flex-wrap gap-2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+																								<div className="flex flex-wrap-reverse gap-2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
 																									{project.tags.map((tag, i) => (
 																										<span
 																											key={i}
-																											className="bg-[#dfc931] text-black text-xs font-semibold px-2 py-1 rounded-full"
+																											className="bg-[#b68832] text-black text-xs font-semibold px-2 py-1 rounded-full flex items-center gap-1"
 																										>
+																											<span className="text-xs">{getTagIcon(tag)}</span>
 																											{tag}
 																										</span>
 																									))}

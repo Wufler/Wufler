@@ -10,6 +10,7 @@ import {
 	AtSign,
 	Copy,
 	Check,
+	Tag,
 } from 'lucide-react'
 import {
 	HTML5,
@@ -21,14 +22,14 @@ import {
 	Prisma,
 	CSSNew,
 	JavaScript,
-	shadcnui,
+	ShadcnUI,
 	Nodejs,
 	Neon,
 	Git,
 	GitHub,
 	Vercel,
-	npm,
-	pnpm,
+	NPM,
+	PNPM,
 	Motion,
 	Docker,
 	Figma,
@@ -38,6 +39,35 @@ import {
 	BetterAuth,
 } from './ui/icons'
 import Finland from './ui/icons/finland'
+import Image from 'next/image'
+
+const getTagIcon = (name: string) => {
+	const tag = name.toLowerCase()
+	if (tag.includes('next') || tag.includes('next.js')) return <Nextjs />
+	if (tag.includes('react')) return <ReactIcon />
+	if (tag.includes('css')) return <CSSNew />
+	if (tag.includes('html')) return <HTML5 />
+	if (tag.includes('typescript') || tag.includes('ts')) return <TypeScript />
+	if (tag.includes('javascript') || tag.includes('js')) return <JavaScript />
+	if (tag.includes('tailwind')) return <TailwindCSS />
+	if (tag.includes('node') || tag.includes('nodejs')) return <Nodejs />
+	if (tag.includes('postgres') || tag.includes('postgresql'))
+		return <PostgreSQL />
+	if (tag.includes('prisma')) return <Prisma />
+	if (tag.includes('docker')) return <Docker />
+	if (tag.includes('git')) return <Git />
+	if (tag.includes('github')) return <GitHub />
+	if (tag.includes('vercel')) return <Vercel />
+	if (tag.includes('motion')) return <Motion />
+	if (tag.includes('betterauth')) return <BetterAuth />
+	if (tag.includes('html')) return <HTML5 />
+	if (tag.includes('npm')) return <NPM />
+	if (tag.includes('pnpm')) return <PNPM />
+	if (tag.includes('neon')) return <Neon />
+	if (tag.includes('shadcn')) return <ShadcnUI />
+
+	return <Tag />
+}
 
 export default function About({
 	onClose,
@@ -118,7 +148,7 @@ export default function About({
 			content: (
 				<div className="text-white space-y-4 pb-6">
 					<p className="leading-relaxed text-lg">
-						Hi! I&apos;m Philip Huynh, a full-stack developer from{' '}
+						Hi! I&apos;m Philip Huynh, a full-stack developer from
 						<Finland className="inline-block align-middle" /> Finland. I make some fun
 						things, my coding journey started at the end of 2021 with a URL shortener
 						as my first project.
@@ -198,14 +228,14 @@ export default function About({
 								name: 'tailwindcss',
 								link: 'https://tailwindcss.com/',
 							},
-							{ Icon: shadcnui, name: 'shadcn/ui', link: 'https://ui.shadcn.com/' },
+							{ Icon: ShadcnUI, name: 'shadcn/ui', link: 'https://ui.shadcn.com/' },
 							{ Icon: Motion, name: 'motion', link: 'https://motion.dev/' },
 							{ Icon: Nodejs, name: 'NodeJS', link: 'https://nodejs.org/' },
 							{ Icon: Git, name: 'Git', link: 'https://git-scm.com/' },
 							{ Icon: GitHub, name: 'GitHub', link: 'https://github.com/' },
 							{ Icon: Vercel, name: 'Vercel', link: 'https://vercel.com/' },
-							{ Icon: npm, name: 'npm', link: 'https://www.npmjs.com/' },
-							{ Icon: pnpm, name: 'pnpm', link: 'https://pnpm.io/' },
+							{ Icon: NPM, name: 'npm', link: 'https://www.npmjs.com/' },
+							{ Icon: PNPM, name: 'pnpm', link: 'https://pnpm.io/' },
 							{ Icon: Docker, name: 'Docker', link: 'https://www.docker.com/' },
 							{ Icon: Figma, name: 'Figma', link: 'https://www.figma.com/' },
 							{
@@ -261,43 +291,92 @@ export default function About({
 			title: 'PROJECTS',
 			subtitle: 'CURRENTLY BUILDING',
 			content: (
-				<div className="text-white space-y-4">
-					{builds.map((build, index) => (
-						<div key={index} className="mb-4">
-							<div className="group relative">
-								<div className="bg-[#dfc931]/90 p-4 rounded-lg backdrop-blur-sm">
-									<div className="flex items-start gap-4">
-										<div className="flex-1">
-											<div className="flex items-center justify-between">
-												<h3 className="font-bold text-black text-lg">{build.title}</h3>
-												<div className="flex gap-2">
-													{build.status.map((status, idx) => (
-														<span
-															key={idx}
-															className="px-2 py-0.5 bg-black/20 text-white rounded-full text-xs"
-														>
-															{status}
-														</span>
-													))}
-												</div>
-											</div>
-											<p className="text-black/80 mt-1 mb-2">{build.description}</p>
-											<div className="flex flex-wrap gap-2">
-												{build.tags.map((tag, idx) => (
-													<span
-														key={idx}
-														className="px-2 py-0.5 bg-black/10 text-black rounded text-xs"
-													>
-														{tag}
-													</span>
-												))}
-											</div>
-										</div>
-									</div>
+				<div className="space-y-8 pb-6">
+					{builds.filter(build => build.visible).length === 0 ? (
+						<div className="flex items-center justify-center">
+							<div className="text-center space-y-4">
+								<div className="space-y-2">
+									<h3 className="text-2xl font-bold text-white">Nothing here yet...</h3>
+									<p className="text-white/60 max-w-md">
+										Taking some time to create new things. Stay tuned!
+									</p>
 								</div>
 							</div>
 						</div>
-					))}
+					) : (
+						<div
+							className={`grid ${
+								localFullscreen
+									? 'xl:grid-cols-3 md:grid-cols-2 grid-cols-1'
+									: 'grid-cols-1'
+							} gap-6`}
+						>
+							{builds
+								.filter(build => build.visible)
+								.map((build, index) => (
+									<div key={build.id || index} className="group relative">
+										<div className="relative bg-white/[0.02] border border-white/10 rounded-2xl hover:border-white/20 transition-all duration-500">
+											<div className="relative p-6">
+												<div className="space-y-4">
+													<div className="space-y-2">
+														<div className="flex items-start justify-between gap-4">
+															<h3 className="text-3xl font-bold text-white">{build.title}</h3>
+															<div className="flex flex-wrap gap-2">
+																{build.status.map((status, idx) => (
+																	<div
+																		key={idx}
+																		className={`px-3 py-1.5 text-white/90 rounded-full text-xs font-medium border transition-colors ${
+																			status.toLowerCase() === 'completed'
+																				? 'bg-green-500/20 border-green-500/40 hover:bg-green-500/30'
+																				: status.toLowerCase() === 'wip' ||
+																				  status.toLowerCase() === 'in progress'
+																				? 'bg-yellow-500/20 border-yellow-500/40 hover:bg-yellow-500/30'
+																				: 'bg-white/10 border-white/20 hover:bg-white/15'
+																		}`}
+																	>
+																		{status}
+																	</div>
+																))}
+															</div>
+														</div>
+													</div>
+													{build.img && (
+														<div className="w-full h-48 overflow-hidden rounded-xl">
+															<div className="overflow-hidden rounded-xl bg-white/5 h-full">
+																<Image
+																	src={build.img}
+																	alt={build.title}
+																	width={640}
+																	height={360}
+																	className="w-full h-full object-cover"
+																/>
+															</div>
+														</div>
+													)}
+													{build.description && (
+														<p className="text-muted">{build.description}</p>
+													)}
+													{build.tags.length > 0 && (
+														<div className="space-y-3">
+															<div className="flex flex-wrap gap-2">
+																{build.tags.map((tag, idx) => (
+																	<span
+																		key={idx}
+																		className="flex items-center gap-2 px-2 py-1 bg-white/5 text-white/80 rounded-lg text-sm font-medium border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 cursor-default"
+																	>
+																		{getTagIcon(tag)} {tag}
+																	</span>
+																))}
+															</div>
+														</div>
+													)}
+												</div>
+											</div>
+										</div>
+									</div>
+								))}
+						</div>
+					)}
 				</div>
 			),
 		},

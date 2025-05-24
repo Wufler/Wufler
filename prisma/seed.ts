@@ -13,7 +13,7 @@ async function main() {
                 category: '2025',
                 visible: true,
                 status: ['new'],
-                tags: ['Next.js', 'Tailwind CSS', 'TypeScript']
+                tags: ['Next.js', 'Tailwind', 'TypeScript']
             },
             {
                 title: 'ZeroNetwork',
@@ -35,7 +35,7 @@ async function main() {
                 category: '2024',
                 visible: true,
                 status: ['outdated', 'updated'],
-                tags: ['Next.js', 'Tailwind CSS', 'TypeScript']
+                tags: ['Next.js', 'Tailwind', 'TypeScript']
             }
         ]
     })
