@@ -46,7 +46,7 @@ const getTagIcon = (name: string) => {
 	if (tag.includes('github')) return <GitHub />
 	if (tag.includes('vercel')) return <Vercel />
 	if (tag.includes('motion')) return <Motion />
-	if (tag.includes('betterauth')) return <BetterAuth />
+	if (tag.includes('better-auth')) return <BetterAuth />
 	if (tag.includes('html')) return <HTML5 />
 	if (tag.includes('npm')) return <NPM />
 	if (tag.includes('pnpm')) return <PNPM />
