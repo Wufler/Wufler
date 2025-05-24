@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'motion/react'
-import { ArrowLeft, ArrowRight, Maximize, Minimize, Tag, X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Maximize, Minimize, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import {
@@ -53,7 +53,7 @@ const getTagIcon = (name: string) => {
 	if (tag.includes('neon')) return <Neon />
 	if (tag.includes('shadcn')) return <ShadcnUI />
 
-	return <Tag />
+	return null
 }
 
 export default function Projects({

@@ -10,7 +10,6 @@ import {
 	AtSign,
 	Copy,
 	Check,
-	Tag,
 } from 'lucide-react'
 import {
 	HTML5,
@@ -66,7 +65,7 @@ const getTagIcon = (name: string) => {
 	if (tag.includes('neon')) return <Neon />
 	if (tag.includes('shadcn')) return <ShadcnUI />
 
-	return <Tag />
+	return null
 }
 
 export default function About({
@@ -328,9 +327,10 @@ export default function About({
 																		className={`px-3 py-1.5 text-white/90 rounded-full text-xs font-medium border transition-colors ${
 																			status.toLowerCase() === 'completed'
 																				? 'bg-green-500/20 border-green-500/40 hover:bg-green-500/30'
-																				: status.toLowerCase() === 'wip' ||
-																				  status.toLowerCase() === 'in progress'
-																				? 'bg-yellow-500/20 border-yellow-500/40 hover:bg-yellow-500/30'
+																				: status.toLowerCase() === 'wip'
+																				? 'bg-gray-100/20 border-gray-100/40 hover:bg-gray-100/30'
+																				: status.toLowerCase() === 'in progress'
+																				? 'bg-orange-600/20 border-orange-600/40 hover:bg-orange-600/30'
 																				: 'bg-white/10 border-white/20 hover:bg-white/15'
 																		}`}
 																	>
