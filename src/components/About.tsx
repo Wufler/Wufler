@@ -36,6 +36,10 @@ import {
 	VisualStudioCode,
 	Discord,
 	BetterAuth,
+	Firebase,
+	Vite,
+	Vue,
+	Stripe,
 } from './ui/icons'
 import Finland from './ui/icons/finland'
 import Image from 'next/image'
@@ -64,6 +68,10 @@ const getTagIcon = (name: string) => {
 	if (tag.includes('pnpm')) return <PNPM />
 	if (tag.includes('neon')) return <Neon />
 	if (tag.includes('shadcn')) return <ShadcnUI />
+	if (tag.includes('vue') || tag.includes('vue.js')) return <Vue />
+	if (tag.includes('firebase')) return <Firebase />
+	if (tag.includes('stripe')) return <Stripe />
+	if (tag.includes('vite')) return <Vite />
 
 	return null
 }
@@ -147,7 +155,7 @@ export default function About({
 			content: (
 				<div className="text-white space-y-4 pb-6">
 					<p className="leading-relaxed text-lg">
-						Hi! I&apos;m Philip Huynh, a full-stack developer from
+						Hi! I&apos;m Philip Huynh, a full-stack developer from{' '}
 						<Finland className="inline-block align-middle" /> Finland. I make some fun
 						things, my coding journey started at the end of 2021 with a URL shortener
 						as my first project.
@@ -255,6 +263,7 @@ export default function About({
 								link: 'https://www.postgresql.org/',
 							},
 							{ Icon: Prisma, name: 'Prisma', link: 'https://www.prisma.io/' },
+							{ Icon: Stripe, name: 'Stripe', link: 'https://stripe.com/' },
 							{ name: 'and more...' },
 						].map(({ Icon, name, link }) => (
 							<div key={name} className="group relative" onMouseEnter={handleHover}>
@@ -318,7 +327,7 @@ export default function About({
 											<div className="relative p-6">
 												<div className="space-y-4">
 													<div className="space-y-2">
-														<div className="flex items-start justify-between gap-4">
+														<div className="flex flex-col md:flex-row items-start justify-between gap-4">
 															<h3 className="text-3xl font-bold text-white">{build.title}</h3>
 															<div className="flex flex-wrap gap-2">
 																{build.status.map((status, idx) => (

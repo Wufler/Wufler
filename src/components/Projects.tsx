@@ -26,6 +26,10 @@ import {
 	Motion,
 	Docker,
 	BetterAuth,
+	Stripe,
+	Firebase,
+	Vue,
+	Vite,
 } from '@/components/ui/icons'
 
 const getTagIcon = (name: string) => {
@@ -52,6 +56,10 @@ const getTagIcon = (name: string) => {
 	if (tag.includes('pnpm')) return <PNPM />
 	if (tag.includes('neon')) return <Neon />
 	if (tag.includes('shadcn')) return <ShadcnUI />
+	if (tag.includes('vue') || tag.includes('vue.js')) return <Vue />
+	if (tag.includes('firebase')) return <Firebase />
+	if (tag.includes('stripe')) return <Stripe />
+	if (tag.includes('vite')) return <Vite />
 
 	return null
 }
