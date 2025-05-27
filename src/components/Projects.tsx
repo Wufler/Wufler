@@ -30,7 +30,9 @@ import {
 	Firebase,
 	Vue,
 	Vite,
+	Authjs,
 } from '@/components/ui/icons'
+import { useSwipeNavigation } from '@/hooks/useSwipeNavigation'
 
 const getTagIcon = (name: string) => {
 	const tag = name.toLowerCase()
@@ -38,8 +40,8 @@ const getTagIcon = (name: string) => {
 	if (tag.includes('react')) return <ReactIcon />
 	if (tag.includes('css')) return <CSSNew />
 	if (tag.includes('html')) return <HTML5 />
-	if (tag.includes('typescript') || tag.includes('ts')) return <TypeScript />
-	if (tag.includes('javascript') || tag.includes('js')) return <JavaScript />
+	if (tag.includes('typescript')) return <TypeScript />
+	if (tag.includes('javascript')) return <JavaScript />
 	if (tag.includes('tailwind')) return <TailwindCSS />
 	if (tag.includes('node') || tag.includes('nodejs')) return <Nodejs />
 	if (tag.includes('postgres') || tag.includes('postgresql'))
@@ -60,7 +62,7 @@ const getTagIcon = (name: string) => {
 	if (tag.includes('firebase')) return <Firebase />
 	if (tag.includes('stripe')) return <Stripe />
 	if (tag.includes('vite')) return <Vite />
-
+	if (tag.includes('auth.js')) return <Authjs />
 	return null
 }
 
@@ -80,6 +82,7 @@ export default function Projects({
 	const [slideDirection, setSlideDirection] = useState(0)
 	const [nextSound, setNextSound] = useState<HTMLAudioElement | null>(null)
 	const [openSound, setOpenSound] = useState<HTMLAudioElement | null>(null)
+	const [closeSound, setCloseSound] = useState<HTMLAudioElement | null>(null)
 	const [localFullscreen, setLocalFullscreen] = useState(false)
 
 	useEffect(() => {
@@ -101,9 +104,16 @@ export default function Projects({
 	}, [])
 
 	useEffect(() => {
+		const closeAudio = new Audio('/close.wav')
+		closeAudio.volume = 0.2
+		setCloseSound(closeAudio)
+	}, [])
+
+	useEffect(() => {
 		if (openSound) openSound.muted = !!isMuted
 		if (nextSound) nextSound.muted = !!isMuted
-	}, [isMuted, openSound, nextSound])
+		if (closeSound) closeSound.muted = !!isMuted
+	}, [isMuted, openSound, nextSound, closeSound])
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -192,14 +202,14 @@ export default function Projects({
 											</div>
 										)}
 										<div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-											<div className="flex flex-wrap-reverse gap-2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+											<div className="flex flex-wrap-reverse gap-2 mb-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200">
 												{project.tags.map((tag, i) => (
 													<span
 														key={i}
 														className="bg-[#b68832] text-black text-xs font-semibold px-2 py-1 rounded-full flex items-center gap-1"
 													>
 														<span className="text-xs">{getTagIcon(tag)}</span>
-														{tag}
+														<span className="text-xs sm:block hidden">{tag}</span>
 													</span>
 												))}
 											</div>
@@ -228,7 +238,10 @@ export default function Projects({
 		} else {
 			setSelectedPage(prev => prev + 1)
 		}
-		nextSound?.play()
+		if (nextSound) {
+			nextSound.muted = !!isMuted
+			nextSound.play()
+		}
 	}
 
 	const handlePrevPage = () => {
@@ -240,7 +253,10 @@ export default function Projects({
 		} else {
 			setSelectedPage(prev => prev - 1)
 		}
-		nextSound?.play()
+		if (nextSound) {
+			nextSound.muted = !!isMuted
+			nextSound.play()
+		}
 	}
 
 	const pageTitle = selectedPage === -1 ? 'ALL' : pages[selectedPage]?.title
@@ -256,12 +272,21 @@ export default function Projects({
 		}
 	}
 
+	const swipeRef = useSwipeNavigation({
+		onSwipeLeft: handleNextPage,
+		onSwipeRight: handlePrevPage,
+		enabled:
+			localFullscreen ||
+			(typeof window !== 'undefined' && window.innerWidth < 1024),
+	})
+
 	return (
 		<>
 			<AnimatePresence mode="wait">
 				{localFullscreen || window?.innerWidth < 1024 ? (
 					<motion.div
 						key="fullscreen"
+						ref={swipeRef}
 						className="fixed lg:inset-12 inset-0 z-[100] bg-gradient-to-b from-[#c85825]/80 to-[#a04b26]/80 backdrop-blur-sm lg:rounded-3xl overflow-hidden shadow-xl"
 						initial={{ opacity: 0, scale: 0.95 }}
 						animate={{ opacity: 1, scale: 1 }}
@@ -289,7 +314,10 @@ export default function Projects({
 											<button
 												onClick={() => {
 													toggleFullscreen()
-													openSound?.play()
+													if (closeSound) {
+														closeSound.muted = !!isMuted
+														closeSound.play()
+													}
 												}}
 												className="hidden lg:block text-white hover:text-yellow-200 transition-colors"
 											>
@@ -326,7 +354,7 @@ export default function Projects({
 								<div className="border-b-2 border-dashed border-[#dfc931] mt-2"></div>
 							</div>
 
-							<div className="p-6 pt-0 pb-0 flex-1 overflow-y-auto">
+							<div className="p-6 pt-0 pb-0 flex-1 overflow-y-auto relative">
 								<div className="relative h-[calc(100%-180px)] overflow-visible">
 									<div className="overflow-y-auto h-full px-3 -mx-3">
 										<AnimatePresence initial={false} mode="wait" custom={slideDirection}>
@@ -413,14 +441,16 @@ export default function Projects({
 																								</div>
 																							)}
 																							<div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-																								<div className="flex flex-wrap-reverse gap-2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+																								<div className="flex flex-wrap-reverse gap-2 mb-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200">
 																									{project.tags.map((tag, i) => (
 																										<span
 																											key={i}
 																											className="bg-[#b68832] text-black text-xs font-semibold px-2 py-1 rounded-full flex items-center gap-1"
 																										>
 																											<span className="text-xs">{getTagIcon(tag)}</span>
-																											{tag}
+																											<span className="text-xs sm:block hidden">
+																												{tag}
+																											</span>
 																										</span>
 																									))}
 																								</div>
@@ -471,7 +501,10 @@ export default function Projects({
 									onClick={() => {
 										setSlideDirection(-1)
 										setSelectedPage(-1)
-										nextSound?.play()
+										if (nextSound) {
+											nextSound.muted = !!isMuted
+											nextSound.play()
+										}
 									}}
 									whileHover={{ scale: 1.05 }}
 									whileTap={{ scale: 0.95 }}
@@ -490,7 +523,10 @@ export default function Projects({
 										onClick={() => {
 											setSlideDirection(i > selectedPage ? 1 : -1)
 											setSelectedPage(i)
-											nextSound?.play()
+											if (nextSound) {
+												nextSound.muted = !!isMuted
+												nextSound.play()
+											}
 										}}
 										whileHover={{ scale: 1.05 }}
 										whileTap={{ scale: 0.95 }}
@@ -529,7 +565,13 @@ export default function Projects({
 										</AnimatePresence>
 										<div className="flex gap-3">
 											<button
-												onClick={toggleFullscreen}
+												onClick={() => {
+													toggleFullscreen()
+													if (openSound) {
+														openSound.muted = !!isMuted
+														openSound.play()
+													}
+												}}
 												className="hidden lg:block text-white hover:text-yellow-200 transition-colors"
 											>
 												<Maximize size={24} />
@@ -646,14 +688,16 @@ export default function Projects({
 																								</div>
 																							)}
 																							<div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-																								<div className="flex flex-wrap-reverse gap-2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+																								<div className="flex flex-wrap-reverse gap-2 mb-1 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200">
 																									{project.tags.map((tag, i) => (
 																										<span
 																											key={i}
 																											className="bg-[#b68832] text-black text-xs font-semibold px-2 py-1 rounded-full flex items-center gap-1"
 																										>
 																											<span className="text-xs">{getTagIcon(tag)}</span>
-																											{tag}
+																											<span className="text-xs sm:block hidden">
+																												{tag}
+																											</span>
 																										</span>
 																									))}
 																								</div>
@@ -704,7 +748,10 @@ export default function Projects({
 									onClick={() => {
 										setSlideDirection(-1)
 										setSelectedPage(-1)
-										nextSound?.play()
+										if (nextSound) {
+											nextSound.muted = !!isMuted
+											nextSound.play()
+										}
 									}}
 									whileHover={{ scale: 1.05 }}
 									whileTap={{ scale: 0.95 }}
@@ -723,7 +770,10 @@ export default function Projects({
 										onClick={() => {
 											setSlideDirection(i > selectedPage ? 1 : -1)
 											setSelectedPage(i)
-											nextSound?.play()
+											if (nextSound) {
+												nextSound.muted = !!isMuted
+												nextSound.play()
+											}
 										}}
 										whileHover={{ scale: 1.05 }}
 										whileTap={{ scale: 0.95 }}

@@ -135,7 +135,6 @@ export default function Menu({
 		if (newFullscreenState) {
 			setWasAboutOpen(showMenu)
 			setShowMenu(false)
-			closeSound?.play()
 		} else if (wasAboutOpen) {
 			setShowMenu(true)
 		}
@@ -146,7 +145,6 @@ export default function Menu({
 		if (newFullscreenState) {
 			setWasProjectsOpen(isMenuOpen)
 			setIsMenuOpen(false)
-			closeSound?.play()
 		} else if (wasProjectsOpen) {
 			setIsMenuOpen(true)
 		}
