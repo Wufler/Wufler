@@ -40,9 +40,11 @@ import {
 	Vite,
 	Vue,
 	Stripe,
+	Authjs,
 } from './ui/icons'
 import Finland from './ui/icons/finland'
 import Image from 'next/image'
+import { useSwipeNavigation } from '@/hooks/useSwipeNavigation'
 
 const getTagIcon = (name: string) => {
 	const tag = name.toLowerCase()
@@ -50,8 +52,8 @@ const getTagIcon = (name: string) => {
 	if (tag.includes('react')) return <ReactIcon />
 	if (tag.includes('css')) return <CSSNew />
 	if (tag.includes('html')) return <HTML5 />
-	if (tag.includes('typescript') || tag.includes('ts')) return <TypeScript />
-	if (tag.includes('javascript') || tag.includes('js')) return <JavaScript />
+	if (tag.includes('typescript')) return <TypeScript />
+	if (tag.includes('javascript')) return <JavaScript />
 	if (tag.includes('tailwind')) return <TailwindCSS />
 	if (tag.includes('node') || tag.includes('nodejs')) return <Nodejs />
 	if (tag.includes('postgres') || tag.includes('postgresql'))
@@ -72,6 +74,7 @@ const getTagIcon = (name: string) => {
 	if (tag.includes('firebase')) return <Firebase />
 	if (tag.includes('stripe')) return <Stripe />
 	if (tag.includes('vite')) return <Vite />
+	if (tag.includes('auth.js')) return <Authjs />
 
 	return null
 }
@@ -94,6 +97,7 @@ export default function About({
 	const [nextSound, setNextSound] = useState<HTMLAudioElement | null>(null)
 	const [openSound, setOpenSound] = useState<HTMLAudioElement | null>(null)
 	const [moveSound, setMoveSound] = useState<HTMLAudioElement | null>(null)
+	const [closeSound, setCloseSound] = useState<HTMLAudioElement | null>(null)
 	const [localFullscreen, setLocalFullscreen] = useState(false)
 	const [isDiscordCopied, setIsDiscordCopied] = useState(false)
 
@@ -133,6 +137,12 @@ export default function About({
 		const moveAudio = new Audio('/move.wav')
 		moveAudio.volume = 0.2
 		setMoveSound(moveAudio)
+	}, [])
+
+	useEffect(() => {
+		const closeAudio = new Audio('/close.wav')
+		closeAudio.volume = 0.2
+		setCloseSound(closeAudio)
 	}, [])
 
 	const handleDiscordClick = () => {
@@ -420,12 +430,21 @@ export default function About({
 		}
 	}
 
+	const swipeRef = useSwipeNavigation({
+		onSwipeLeft: handleNextPage,
+		onSwipeRight: handlePrevPage,
+		enabled:
+			localFullscreen ||
+			(typeof window !== 'undefined' && window.innerWidth < 1024),
+	})
+
 	return (
 		<>
 			<AnimatePresence mode="wait">
 				{localFullscreen || window?.innerWidth < 1024 ? (
 					<motion.div
 						key="fullscreen"
+						ref={swipeRef}
 						className="fixed lg:inset-12 inset-0 z-[100] bg-gradient-to-b from-[#c85825]/80 to-[#a04b26]/80 backdrop-blur-sm lg:rounded-3xl overflow-hidden shadow-xl"
 						initial={{ opacity: 0, scale: 0.95 }}
 						animate={{ opacity: 1, scale: 1 }}
@@ -453,9 +472,9 @@ export default function About({
 											<button
 												onClick={() => {
 													toggleFullscreen()
-													if (openSound) {
-														openSound.muted = !!isMuted
-														openSound.play()
+													if (closeSound) {
+														closeSound.muted = !!isMuted
+														closeSound.play()
 													}
 												}}
 												className="hidden lg:block text-white hover:text-yellow-200 transition-colors"
@@ -505,7 +524,7 @@ export default function About({
 								<div className="border-b-2 border-dashed border-[#dfc931] mt-2"></div>
 							</div>
 
-							<div className="p-6 pt-3 flex-1 overflow-y-auto">
+							<div className="p-6 pt-3 flex-1 overflow-y-auto relative">
 								<div className="relative h-[calc(100%-180px)] overflow-visible">
 									<div className="overflow-y-auto h-full px-3 -mx-3">
 										<AnimatePresence initial={false} mode="wait" custom={slideDirection}>
@@ -554,7 +573,13 @@ export default function About({
 										</AnimatePresence>
 										<div className="flex gap-3">
 											<button
-												onClick={toggleFullscreen}
+												onClick={() => {
+													toggleFullscreen()
+													if (openSound) {
+														openSound.muted = !!isMuted
+														openSound.play()
+													}
+												}}
 												className="hidden lg:block text-white hover:text-yellow-200 transition-colors"
 											>
 												<Maximize size={24} />
