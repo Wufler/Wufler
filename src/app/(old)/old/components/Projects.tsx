@@ -60,9 +60,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
 												? 'bg-green-500'
 												: status === 'outdated'
 												? 'bg-red-500'
-												: status === 'test'
-												? 'bg-orange-500'
-												: ''
+												: 'bg-orange-500'
 										} text-black`}
 									>
 										{status}
