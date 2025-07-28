@@ -12,7 +12,7 @@ async function main() {
                 href: 'https://zeronetwork.wolfey.me',
                 category: '2025',
                 visible: true,
-                status: ['new'],
+                status: ['new', 'test'],
                 tags: ['Next.js', 'Tailwind', 'TypeScript']
             },
             {
