@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import {
 	ArrowLeft,
@@ -94,24 +94,21 @@ export default function About({
 }) {
 	const [selectedPage, setSelectedPage] = useState(0)
 	const [slideDirection, setSlideDirection] = useState(0)
-	const [nextSound, setNextSound] = useState<HTMLAudioElement | null>(null)
-	const [openSound, setOpenSound] = useState<HTMLAudioElement | null>(null)
-	const [moveSound, setMoveSound] = useState<HTMLAudioElement | null>(null)
-	const [closeSound, setCloseSound] = useState<HTMLAudioElement | null>(null)
-	const [localFullscreen, setLocalFullscreen] = useState(false)
+	const nextSound = useRef<HTMLAudioElement | null>(null)
+	const openSound = useRef<HTMLAudioElement | null>(null)
+	const moveSound = useRef<HTMLAudioElement | null>(null)
+	const closeSound = useRef<HTMLAudioElement | null>(null)
+	const [internalFullscreen, setInternalFullscreen] = useState(false)
 	const [isDiscordCopied, setIsDiscordCopied] = useState(false)
 
-	useEffect(() => {
-		if (isFullscreen !== undefined) {
-			setLocalFullscreen(isFullscreen)
-		}
-	}, [isFullscreen])
+	const localFullscreen = isFullscreen ?? internalFullscreen
 
 	useEffect(() => {
 		const handleResize = () => {
 			const isLargeScreen = window.innerWidth >= 1024
-			if (!isLargeScreen && !localFullscreen) {
-				setLocalFullscreen(true)
+			const currentFullscreen = isFullscreen ?? internalFullscreen
+			if (!isLargeScreen && !currentFullscreen) {
+				setInternalFullscreen(true)
 				onFullscreenChange?.(true)
 			}
 		}
@@ -119,30 +116,30 @@ export default function About({
 		handleResize()
 		window.addEventListener('resize', handleResize)
 		return () => window.removeEventListener('resize', handleResize)
-	}, [localFullscreen, onFullscreenChange])
+	}, [isFullscreen, internalFullscreen, onFullscreenChange])
 
 	useEffect(() => {
 		const openAudio = new Audio('/open.wav')
 		openAudio.volume = 0.2
-		setOpenSound(openAudio)
+		openSound.current = openAudio
 	}, [])
 
 	useEffect(() => {
 		const nextAudio = new Audio('/next.wav')
 		nextAudio.volume = 0.2
-		setNextSound(nextAudio)
+		nextSound.current = nextAudio
 	}, [])
 
 	useEffect(() => {
 		const moveAudio = new Audio('/move.wav')
 		moveAudio.volume = 0.2
-		setMoveSound(moveAudio)
+		moveSound.current = moveAudio
 	}, [])
 
 	useEffect(() => {
 		const closeAudio = new Audio('/close.wav')
 		closeAudio.volume = 0.2
-		setCloseSound(closeAudio)
+		closeSound.current = closeAudio
 	}, [])
 
 	const handleDiscordClick = () => {
@@ -152,9 +149,9 @@ export default function About({
 	}
 
 	const handleHover = () => {
-		if (moveSound) {
-			moveSound.muted = !!isMuted
-			moveSound.play()
+		if (moveSound.current) {
+			moveSound.current.muted = !!isMuted
+			moveSound.current.play()
 		}
 	}
 
@@ -422,18 +419,18 @@ export default function About({
 	const handleNextPage = () => {
 		setSlideDirection(1)
 		setSelectedPage(prev => (prev + 1) % pages.length)
-		if (nextSound) {
-			nextSound.muted = !!isMuted
-			nextSound.play()
+		if (nextSound.current) {
+			nextSound.current.muted = !!isMuted
+			nextSound.current.play()
 		}
 	}
 
 	const handlePrevPage = () => {
 		setSlideDirection(-1)
 		setSelectedPage(prev => (prev - 1 + pages.length) % pages.length)
-		if (nextSound) {
-			nextSound.muted = !!isMuted
-			nextSound.play()
+		if (nextSound.current) {
+			nextSound.current.muted = !!isMuted
+			nextSound.current.play()
 		}
 	}
 
@@ -441,7 +438,7 @@ export default function About({
 
 	const toggleFullscreen = () => {
 		const newFullscreenState = !localFullscreen
-		setLocalFullscreen(newFullscreenState)
+		setInternalFullscreen(newFullscreenState)
 
 		if (onFullscreenChange) {
 			onFullscreenChange(newFullscreenState)
@@ -490,9 +487,9 @@ export default function About({
 											<button
 												onClick={() => {
 													toggleFullscreen()
-													if (closeSound) {
-														closeSound.muted = !!isMuted
-														closeSound.play()
+													if (closeSound.current) {
+														closeSound.current.muted = !!isMuted
+														closeSound.current.play()
 													}
 												}}
 												className="hidden lg:block text-white hover:text-yellow-200 transition-colors"
@@ -593,9 +590,9 @@ export default function About({
 											<button
 												onClick={() => {
 													toggleFullscreen()
-													if (openSound) {
-														openSound.muted = !!isMuted
-														openSound.play()
+													if (openSound.current) {
+														openSound.current.muted = !!isMuted
+														openSound.current.play()
 													}
 												}}
 												className="hidden lg:block text-white hover:text-yellow-200 transition-colors"

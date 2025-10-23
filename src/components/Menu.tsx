@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 import Buttons from './Buttons'
@@ -17,10 +17,10 @@ export default function Menu({
 	projects: Project[]
 	builds: Build[]
 }) {
-	const [openSound, setOpenSound] = useState<HTMLAudioElement | null>(null)
-	const [closeSound, setCloseSound] = useState<HTMLAudioElement | null>(null)
-	const [moveSound, setMoveSound] = useState<HTMLAudioElement | null>(null)
-	const [projectSound, setProjectSound] = useState<HTMLAudioElement | null>(null)
+	const openSound = useRef<HTMLAudioElement | null>(null)
+	const closeSound = useRef<HTMLAudioElement | null>(null)
+	const moveSound = useRef<HTMLAudioElement | null>(null)
+	const projectSound = useRef<HTMLAudioElement | null>(null)
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const [showMenu, setShowMenu] = useState(false)
 	const [isFullscreen, setIsFullscreen] = useState(false)
@@ -55,18 +55,18 @@ export default function Menu({
 		moveAudio.volume = 0.2
 		projectAudio.volume = 0.2
 
-		setOpenSound(openAudio)
-		setCloseSound(closeAudio)
-		setMoveSound(moveAudio)
-		setProjectSound(projectAudio)
+		openSound.current = openAudio
+		closeSound.current = closeAudio
+		moveSound.current = moveAudio
+		projectSound.current = projectAudio
 	}, [])
 
 	const toggleAudio = () => {
 		setIsMuted(!isMuted)
-		if (openSound) openSound.muted = !isMuted
-		if (closeSound) closeSound.muted = !isMuted
-		if (moveSound) moveSound.muted = !isMuted
-		if (projectSound) projectSound.muted = !isMuted
+		if (openSound.current) openSound.current.muted = !isMuted
+		if (closeSound.current) closeSound.current.muted = !isMuted
+		if (moveSound.current) moveSound.current.muted = !isMuted
+		if (projectSound.current) projectSound.current.muted = !isMuted
 	}
 
 	useEffect(() => {
@@ -92,8 +92,8 @@ export default function Menu({
 	}, [isFullscreen, isAboutFullscreen, wasAboutOpen, wasProjectsOpen])
 
 	const playMoveSound = useCallback(() => {
-		moveSound?.play()
-	}, [moveSound])
+		moveSound.current?.play()
+	}, [])
 
 	const toggleProjects = () => {
 		if (isFullscreen) {
@@ -104,9 +104,9 @@ export default function Menu({
 		}
 
 		if (!isMenuOpen) {
-			openSound?.play()
+			openSound.current?.play()
 		} else {
-			closeSound?.play()
+			closeSound.current?.play()
 		}
 		setIsMenuOpen(!isMenuOpen)
 	}
@@ -120,15 +120,15 @@ export default function Menu({
 		}
 
 		if (!showMenu) {
-			openSound?.play()
+			openSound.current?.play()
 		} else {
-			closeSound?.play()
+			closeSound.current?.play()
 		}
 		setShowMenu(!showMenu)
 	}
 
 	const handleProjectClick = () => {
-		projectSound?.play()
+		projectSound.current?.play()
 	}
 
 	const handleFullscreenChange = (newFullscreenState: boolean) => {

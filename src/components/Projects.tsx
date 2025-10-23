@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'motion/react'
 import { ArrowLeft, ArrowRight, Maximize, Minimize, X } from 'lucide-react'
@@ -80,46 +80,43 @@ export default function Projects({
 }) {
 	const [selectedPage, setSelectedPage] = useState(-1)
 	const [slideDirection, setSlideDirection] = useState(0)
-	const [nextSound, setNextSound] = useState<HTMLAudioElement | null>(null)
-	const [openSound, setOpenSound] = useState<HTMLAudioElement | null>(null)
-	const [closeSound, setCloseSound] = useState<HTMLAudioElement | null>(null)
-	const [localFullscreen, setLocalFullscreen] = useState(false)
+	const nextSound = useRef<HTMLAudioElement | null>(null)
+	const openSound = useRef<HTMLAudioElement | null>(null)
+	const closeSound = useRef<HTMLAudioElement | null>(null)
+	const [internalFullscreen, setInternalFullscreen] = useState(false)
 
-	useEffect(() => {
-		if (isFullscreen !== undefined) {
-			setLocalFullscreen(isFullscreen)
-		}
-	}, [isFullscreen])
+	const localFullscreen = isFullscreen ?? internalFullscreen
 
 	useEffect(() => {
 		const nextAudio = new Audio('/next.wav')
 		nextAudio.volume = 0.2
-		setNextSound(nextAudio)
+		nextSound.current = nextAudio
 	}, [])
 
 	useEffect(() => {
 		const openAudio = new Audio('/open.wav')
 		openAudio.volume = 0.2
-		setOpenSound(openAudio)
+		openSound.current = openAudio
 	}, [])
 
 	useEffect(() => {
 		const closeAudio = new Audio('/close.wav')
 		closeAudio.volume = 0.2
-		setCloseSound(closeAudio)
+		closeSound.current = closeAudio
 	}, [])
 
 	useEffect(() => {
-		if (openSound) openSound.muted = !!isMuted
-		if (nextSound) nextSound.muted = !!isMuted
-		if (closeSound) closeSound.muted = !!isMuted
-	}, [isMuted, openSound, nextSound, closeSound])
+		if (openSound.current) openSound.current.muted = !!isMuted
+		if (nextSound.current) nextSound.current.muted = !!isMuted
+		if (closeSound.current) closeSound.current.muted = !!isMuted
+	}, [isMuted])
 
 	useEffect(() => {
 		const handleResize = () => {
 			const isLargeScreen = window.innerWidth >= 1024
-			if (!isLargeScreen && !localFullscreen) {
-				setLocalFullscreen(true)
+			const currentFullscreen = isFullscreen ?? internalFullscreen
+			if (!isLargeScreen && !currentFullscreen) {
+				setInternalFullscreen(true)
 				onFullscreenChange?.(true)
 			}
 		}
@@ -127,7 +124,7 @@ export default function Projects({
 		handleResize()
 		window.addEventListener('resize', handleResize)
 		return () => window.removeEventListener('resize', handleResize)
-	}, [localFullscreen, onFullscreenChange])
+	}, [isFullscreen, internalFullscreen, onFullscreenChange])
 
 	const categories = [
 		...new Set(projects.map(project => project.category)),
@@ -242,9 +239,9 @@ export default function Projects({
 		} else {
 			setSelectedPage(prev => prev + 1)
 		}
-		if (nextSound) {
-			nextSound.muted = !!isMuted
-			nextSound.play()
+		if (nextSound.current) {
+			nextSound.current.muted = !!isMuted
+			nextSound.current.play()
 		}
 	}
 
@@ -257,9 +254,9 @@ export default function Projects({
 		} else {
 			setSelectedPage(prev => prev - 1)
 		}
-		if (nextSound) {
-			nextSound.muted = !!isMuted
-			nextSound.play()
+		if (nextSound.current) {
+			nextSound.current.muted = !!isMuted
+			nextSound.current.play()
 		}
 	}
 
@@ -269,7 +266,7 @@ export default function Projects({
 
 	const toggleFullscreen = () => {
 		const newFullscreenState = !localFullscreen
-		setLocalFullscreen(newFullscreenState)
+		setInternalFullscreen(newFullscreenState)
 
 		if (onFullscreenChange) {
 			onFullscreenChange(newFullscreenState)
@@ -318,9 +315,9 @@ export default function Projects({
 											<button
 												onClick={() => {
 													toggleFullscreen()
-													if (closeSound) {
-														closeSound.muted = !!isMuted
-														closeSound.play()
+													if (closeSound.current) {
+														closeSound.current.muted = !!isMuted
+														closeSound.current.play()
 													}
 												}}
 												className="hidden lg:block text-white hover:text-yellow-200 transition-colors"
@@ -511,9 +508,9 @@ export default function Projects({
 									onClick={() => {
 										setSlideDirection(-1)
 										setSelectedPage(-1)
-										if (nextSound) {
-											nextSound.muted = !!isMuted
-											nextSound.play()
+										if (nextSound.current) {
+											nextSound.current.muted = !!isMuted
+											nextSound.current.play()
 										}
 									}}
 									whileHover={{ scale: 1.05 }}
@@ -533,9 +530,9 @@ export default function Projects({
 										onClick={() => {
 											setSlideDirection(i > selectedPage ? 1 : -1)
 											setSelectedPage(i)
-											if (nextSound) {
-												nextSound.muted = !!isMuted
-												nextSound.play()
+											if (nextSound.current) {
+												nextSound.current.muted = !!isMuted
+												nextSound.current.play()
 											}
 										}}
 										whileHover={{ scale: 1.05 }}
@@ -577,9 +574,9 @@ export default function Projects({
 											<button
 												onClick={() => {
 													toggleFullscreen()
-													if (openSound) {
-														openSound.muted = !!isMuted
-														openSound.play()
+													if (openSound.current) {
+														openSound.current.muted = !!isMuted
+														openSound.current.play()
 													}
 												}}
 												className="hidden lg:block text-white hover:text-yellow-200 transition-colors"
@@ -764,9 +761,9 @@ export default function Projects({
 									onClick={() => {
 										setSlideDirection(-1)
 										setSelectedPage(-1)
-										if (nextSound) {
-											nextSound.muted = !!isMuted
-											nextSound.play()
+										if (nextSound.current) {
+											nextSound.current.muted = !!isMuted
+											nextSound.current.play()
 										}
 									}}
 									whileHover={{ scale: 1.05 }}
@@ -786,9 +783,9 @@ export default function Projects({
 										onClick={() => {
 											setSlideDirection(i > selectedPage ? 1 : -1)
 											setSelectedPage(i)
-											if (nextSound) {
-												nextSound.muted = !!isMuted
-												nextSound.play()
+											if (nextSound.current) {
+												nextSound.current.muted = !!isMuted
+												nextSound.current.play()
 											}
 										}}
 										whileHover={{ scale: 1.05 }}
