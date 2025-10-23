@@ -17,9 +17,9 @@ export default function Container({
 			{showMenu && (
 				<motion.div
 					className={cn(
-						'fixed top-1/2 -translate-y-1/2 z-[99]',
+						'fixed top-1/2 -translate-y-1/2 z-99',
 						isSecondary ? 'right-8' : 'left-8',
-						isFullscreen && 'inset-0 !translate-y-0'
+						isFullscreen && 'inset-0 translate-y-0!'
 					)}
 					initial={{ x: isSecondary ? 100 : -100, opacity: 0 }}
 					animate={{ x: 0, opacity: 1 }}

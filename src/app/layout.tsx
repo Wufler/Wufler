@@ -10,6 +10,8 @@ const quicksand = Quicksand({
 	subsets: ['latin'],
 	display: 'swap',
 	variable: '--font-quicksand',
+	preload: true,
+	fallback: ['system-ui', 'arial'],
 })
 
 export const metadata: Metadata = {

@@ -178,8 +178,12 @@ export default function Projects({
 											alt={project.title}
 											fill
 											className="object-cover w-full h-full group-hover:brightness-110 transition"
+											priority={index < 3}
+											quality={75}
+											loading={index < 3 ? 'eager' : 'lazy'}
+											sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
 										/>
-										<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10" />
+										<div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent z-10" />
 										{project.status && (
 											<div className="absolute top-3 left-3 z-20 flex gap-2">
 												{project.status.map((status, i) => (
@@ -287,7 +291,7 @@ export default function Projects({
 					<motion.div
 						key="fullscreen"
 						ref={swipeRef}
-						className="fixed lg:inset-12 inset-0 z-[100] bg-gradient-to-b from-[#c85825]/80 to-[#a04b26]/80 backdrop-blur-sm lg:rounded-3xl overflow-hidden shadow-xl"
+						className="fixed lg:inset-12 inset-0 z-100 bg-linear-to-b from-[#c85825]/80 to-[#a04b26]/80 backdrop-blur-sm lg:rounded-3xl overflow-hidden shadow-xl"
 						initial={{ opacity: 0, scale: 0.95 }}
 						animate={{ opacity: 1, scale: 1 }}
 						exit={{ opacity: 0, scale: 0.95 }}
@@ -417,8 +421,14 @@ export default function Projects({
 																								alt={project.title}
 																								fill
 																								className="object-cover w-full h-full group-hover:brightness-110 transition"
+																								priority={index < 3 && categoryIndex === 0}
+																								quality={75}
+																								loading={
+																									index < 3 && categoryIndex === 0 ? 'eager' : 'lazy'
+																								}
+																								sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
 																							/>
-																							<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10" />
+																							<div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent z-10" />
 																							{project.status && (
 																								<div className="absolute top-3 left-3 z-20 flex gap-2">
 																									{project.status.map((status, i) => (
@@ -540,7 +550,7 @@ export default function Projects({
 				) : (
 					<motion.div
 						key="normal"
-						className="w-full h-[90vh] bg-gradient-to-b from-[#c85825]/80 to-[#a04b26]/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl relative"
+						className="w-full h-[90vh] bg-linear-to-b from-[#c85825]/80 to-[#a04b26]/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl relative"
 						initial={{ opacity: 0, scale: 0.95 }}
 						animate={{ opacity: 1, scale: 1 }}
 						exit={{ opacity: 0, scale: 0.95 }}
@@ -664,8 +674,14 @@ export default function Projects({
 																								alt={project.title}
 																								fill
 																								className="object-cover w-full h-full group-hover:brightness-110 transition"
+																								priority={index < 3 && categoryIndex === 0}
+																								quality={75}
+																								loading={
+																									index < 3 && categoryIndex === 0 ? 'eager' : 'lazy'
+																								}
+																								sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
 																							/>
-																							<div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10" />
+																							<div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent z-10" />
 																							{project.status && (
 																								<div className="absolute top-3 left-3 z-20 flex gap-2">
 																									{project.status.map((status, i) => (

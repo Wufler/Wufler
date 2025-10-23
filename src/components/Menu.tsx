@@ -177,19 +177,17 @@ export default function Menu({
 							target="_blank"
 							className="pointer-events-auto"
 						>
-							<h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#E67E22] via-[#F39C12] to-[#FFA07A] drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
+							<h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold bg-clip-text text-transparent bg-linear-to-r from-[#E67E22] via-[#F39C12] to-[#FFA07A] drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
 								WOLFEY
 							</h1>
 						</Link>
-						<Link href="/old" className="pointer-events-auto">
-							<Image
-								src={'/favicon.ico'}
-								width={80}
-								height={80}
-								alt="🦊"
-								className="size-16 md:size-20 relative z-10"
-							/>
-						</Link>
+						<Image
+							src={'/favicon.ico'}
+							width={80}
+							height={80}
+							alt="🦊"
+							className="size-16 md:size-20 relative z-10"
+						/>
 					</div>
 					<button onClick={toggleAudio} className="pointer-events-auto text-white">
 						{isMuted ? <VolumeOff /> : <Volume2 />}
