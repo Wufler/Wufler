@@ -173,7 +173,7 @@ export default function Menu({
 				<div className="flex flex-col items-center gap-4">
 					<div className="flex items-center gap-4">
 						<Link
-							href="https://github.com/Wufler"
+							href="https://me.wolfey.me"
 							target="_blank"
 							className="pointer-events-auto"
 						>
