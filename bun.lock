@@ -5,6 +5,7 @@
       "name": "wolfey",
       "dependencies": {
         "@prisma/client": "^6.18.0",
+        "@prisma/nextjs-monorepo-workaround-plugin": "^6.18.0",
         "@vercel/analytics": "^1.5.0",
         "@vercel/speed-insights": "^1.2.0",
         "class-variance-authority": "^0.7.1",
@@ -256,6 +257,8 @@
     "@prisma/fetch-engine": ["@prisma/fetch-engine@6.18.0", "", { "dependencies": { "@prisma/debug": "6.18.0", "@prisma/engines-version": "6.18.0-8.34b5a692b7bd79939a9a2c3ef97d816e749cda2f", "@prisma/get-platform": "6.18.0" } }, "sha512-TdaBvTtBwP3IoqVYoGIYpD4mWlk0pJpjTJjir/xLeNWlwog7Sl3bD2J0jJ8+5+q/6RBg+acb9drsv5W6lqae7A=="],
 
     "@prisma/get-platform": ["@prisma/get-platform@6.18.0", "", { "dependencies": { "@prisma/debug": "6.18.0" } }, "sha512-uXNJCJGhxTCXo2B25Ta91Rk1/Nmlqg9p7G9GKh8TPhxvAyXCvMNQoogj4JLEUy+3ku8g59cpyQIKFhqY2xO2bg=="],
+
+    "@prisma/nextjs-monorepo-workaround-plugin": ["@prisma/nextjs-monorepo-workaround-plugin@6.18.0", "", {}, "sha512-LyKtuMLJ4CtBbt3Kn7LFk/cyFyPV6wONrEpC+WrzfuMzptbY5VJr4Di49oCfwHTs5uxtkpPMMVTY19XgTStb8w=="],
 
     "@rtsao/scc": ["@rtsao/scc@1.1.0", "", {}, "sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g=="],
 

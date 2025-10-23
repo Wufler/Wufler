@@ -1,12 +1,11 @@
+// @ts-ignore
+import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
   experimental: {
     turbopackFileSystemCacheForDev: true,
-    optimizePackageImports: [
-      '@prisma/client',
-    ],
   },
   images: {
     remotePatterns: [
@@ -22,6 +21,12 @@ const nextConfig: NextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
+  },
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.plugins = [...config.plugins, new PrismaPlugin()];
+    }
+    return config;
   },
 };
 
