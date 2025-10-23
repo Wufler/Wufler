@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import {
 	ArrowLeft,
@@ -94,24 +94,21 @@ export default function About({
 }) {
 	const [selectedPage, setSelectedPage] = useState(0)
 	const [slideDirection, setSlideDirection] = useState(0)
-	const [nextSound, setNextSound] = useState<HTMLAudioElement | null>(null)
-	const [openSound, setOpenSound] = useState<HTMLAudioElement | null>(null)
-	const [moveSound, setMoveSound] = useState<HTMLAudioElement | null>(null)
-	const [closeSound, setCloseSound] = useState<HTMLAudioElement | null>(null)
-	const [localFullscreen, setLocalFullscreen] = useState(false)
+	const nextSound = useRef<HTMLAudioElement | null>(null)
+	const openSound = useRef<HTMLAudioElement | null>(null)
+	const moveSound = useRef<HTMLAudioElement | null>(null)
+	const closeSound = useRef<HTMLAudioElement | null>(null)
+	const [internalFullscreen, setInternalFullscreen] = useState(false)
 	const [isDiscordCopied, setIsDiscordCopied] = useState(false)
 
-	useEffect(() => {
-		if (isFullscreen !== undefined) {
-			setLocalFullscreen(isFullscreen)
-		}
-	}, [isFullscreen])
+	const localFullscreen = isFullscreen ?? internalFullscreen
 
 	useEffect(() => {
 		const handleResize = () => {
 			const isLargeScreen = window.innerWidth >= 1024
-			if (!isLargeScreen && !localFullscreen) {
-				setLocalFullscreen(true)
+			const currentFullscreen = isFullscreen ?? internalFullscreen
+			if (!isLargeScreen && !currentFullscreen) {
+				setInternalFullscreen(true)
 				onFullscreenChange?.(true)
 			}
 		}
@@ -119,30 +116,30 @@ export default function About({
 		handleResize()
 		window.addEventListener('resize', handleResize)
 		return () => window.removeEventListener('resize', handleResize)
-	}, [localFullscreen, onFullscreenChange])
+	}, [isFullscreen, internalFullscreen, onFullscreenChange])
 
 	useEffect(() => {
 		const openAudio = new Audio('/open.wav')
 		openAudio.volume = 0.2
-		setOpenSound(openAudio)
+		openSound.current = openAudio
 	}, [])
 
 	useEffect(() => {
 		const nextAudio = new Audio('/next.wav')
 		nextAudio.volume = 0.2
-		setNextSound(nextAudio)
+		nextSound.current = nextAudio
 	}, [])
 
 	useEffect(() => {
 		const moveAudio = new Audio('/move.wav')
 		moveAudio.volume = 0.2
-		setMoveSound(moveAudio)
+		moveSound.current = moveAudio
 	}, [])
 
 	useEffect(() => {
 		const closeAudio = new Audio('/close.wav')
 		closeAudio.volume = 0.2
-		setCloseSound(closeAudio)
+		closeSound.current = closeAudio
 	}, [])
 
 	const handleDiscordClick = () => {
@@ -152,9 +149,9 @@ export default function About({
 	}
 
 	const handleHover = () => {
-		if (moveSound) {
-			moveSound.muted = !!isMuted
-			moveSound.play()
+		if (moveSound.current) {
+			moveSound.current.muted = !!isMuted
+			moveSound.current.play()
 		}
 	}
 
@@ -167,21 +164,19 @@ export default function About({
 					<p className="leading-relaxed text-lg">
 						Hi! I&apos;m Philip Huynh, a full-stack developer from{' '}
 						<Finland className="inline-block align-middle" /> Finland. I make some fun
-						things, my coding journey started at the end of 2021 with a URL shortener
-						as my first project.
+						websites for people to mess around with.
 					</p>
 
 					<div className="space-y-2">
-						<h3 className="text-[#dfc931] font-bold text-xl">Contact</h3>
-						<div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+						<div className="grid grid-cols-1 sm:grid-cols-1 gap-2">
 							<a
 								href="mailto:hi@wolfey.me"
 								className="block"
 								onMouseEnter={handleHover}
 							>
-								<div className="bg-gradient-to-r from-[#dfc931]/50 to-[#dfc931]/30 p-2.5 rounded-lg hover:from-[#dfc931]/70 hover:to-[#dfc931]/50 transition-all duration-200 group">
+								<div className="bg-linear-to-r from-[#dfc931]/50 to-[#dfc931]/30 p-2.5 rounded-lg hover:from-[#dfc931]/70 hover:to-[#dfc931]/50 transition-all duration-200 group">
 									<div className="flex items-center gap-2">
-										<span className="transition-all duration-200 transform group-hover:rotate-[360deg]">
+										<span className="transition-all duration-200 transform group-hover:rotate-360">
 											<AtSign className="size-4 absolute group-hover:opacity-0 group-hover:scale-0 transition-all duration-200" />
 											<ArrowRight className="size-4 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200" />
 										</span>
@@ -189,21 +184,38 @@ export default function About({
 									</div>
 								</div>
 							</a>
-							<div
-								onClick={handleDiscordClick}
-								onMouseEnter={handleHover}
-								className="bg-gradient-to-r from-[#dfc931]/50 to-[#dfc931]/30 p-2.5 rounded-lg hover:from-[#dfc931]/70 hover:to-[#dfc931]/50 transition-all duration-200 cursor-pointer group"
-							>
-								<div className="flex items-center gap-2">
-									<span className="transition-all duration-200 transform group-hover:rotate-[360deg]">
-										<Discord className="size-4 absolute group-hover:opacity-0 group-hover:scale-0 transition-all duration-200" />
-										{isDiscordCopied ? (
-											<Check className="size-4 text-green-500" />
-										) : (
-											<Copy className="size-4 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200" />
-										)}
-									</span>
-									<h3 className="text-sm font-semibold truncate">woolfey</h3>
+							<div className="flex gap-2">
+								<a
+									href="https://github.com/Wufler"
+									className="block w-full"
+									onMouseEnter={handleHover}
+								>
+									<div className="bg-linear-to-r from-[#dfc931]/50 to-[#dfc931]/30 p-2.5 rounded-lg hover:from-[#dfc931]/70 hover:to-[#dfc931]/50 transition-all duration-200 group">
+										<div className="flex items-center gap-2">
+											<span className="transition-all duration-200 transform group-hover:rotate-360">
+												<GitHub className="size-4 absolute group-hover:opacity-0 group-hover:scale-0 transition-all duration-200" />
+												<ArrowRight className="size-4 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200" />
+											</span>
+											<h3 className="text-sm font-semibold truncate">GitHub</h3>
+										</div>
+									</div>
+								</a>
+								<div
+									onClick={handleDiscordClick}
+									onMouseEnter={handleHover}
+									className="w-full bg-linear-to-r from-[#dfc931]/50 to-[#dfc931]/30 p-2.5 rounded-lg hover:from-[#dfc931]/70 hover:to-[#dfc931]/50 transition-all duration-200 cursor-pointer group"
+								>
+									<div className="flex items-center gap-2">
+										<span className="transition-all duration-200 transform group-hover:rotate-360">
+											<Discord className="size-4 absolute group-hover:opacity-0 group-hover:scale-0 transition-all duration-200" />
+											{isDiscordCopied ? (
+												<Check className="size-4 text-green-500" />
+											) : (
+												<Copy className="size-4 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200" />
+											)}
+										</span>
+										<h3 className="text-sm font-semibold truncate">woolfey</h3>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -284,7 +296,7 @@ export default function About({
 										rel="noopener noreferrer"
 										className="block"
 									>
-										<div className="bg-gradient-to-r from-[#dfc931]/50 to-[#dfc931]/30 p-2.5 rounded-lg hover:from-[#dfc931]/70 hover:to-[#dfc931]/50 transition-all duration-200">
+										<div className="bg-linear-to-r from-[#dfc931]/50 to-[#dfc931]/30 p-2.5 rounded-lg hover:from-[#dfc931]/70 hover:to-[#dfc931]/50 transition-all duration-200">
 											<div className="flex items-center gap-2">
 												{Icon && <Icon className="size-4" />}
 												<h3 className="text-sm font-semibold truncate">{name}</h3>
@@ -292,7 +304,7 @@ export default function About({
 										</div>
 									</a>
 								) : (
-									<div className="bg-gradient-to-r from-[#dfc931]/50 to-[#dfc931]/30 p-2.5 rounded-lg">
+									<div className="bg-linear-to-r from-[#dfc931]/50 to-[#dfc931]/30 p-2.5 rounded-lg">
 										<div className="flex items-center gap-2">
 											{Icon && <Icon className="size-4" />}
 											<h3 className="text-sm font-semibold truncate">{name}</h3>
@@ -333,7 +345,7 @@ export default function About({
 								.filter(build => build.visible)
 								.map((build, index) => (
 									<div key={build.id || index} className="group relative">
-										<div className="relative bg-white/[0.02] border border-white/10 rounded-2xl hover:border-white/20 transition-all duration-500">
+										<div className="relative bg-white/2 border border-white/10 rounded-2xl hover:border-white/20 transition-all duration-500">
 											<div className="relative p-6">
 												<div className="space-y-4">
 													<div className="space-y-2">
@@ -368,6 +380,9 @@ export default function About({
 																	width={640}
 																	height={360}
 																	className="w-full h-full object-cover"
+																	quality={75}
+																	loading="lazy"
+																	sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 																/>
 															</div>
 														</div>
@@ -404,18 +419,18 @@ export default function About({
 	const handleNextPage = () => {
 		setSlideDirection(1)
 		setSelectedPage(prev => (prev + 1) % pages.length)
-		if (nextSound) {
-			nextSound.muted = !!isMuted
-			nextSound.play()
+		if (nextSound.current) {
+			nextSound.current.muted = !!isMuted
+			nextSound.current.play()
 		}
 	}
 
 	const handlePrevPage = () => {
 		setSlideDirection(-1)
 		setSelectedPage(prev => (prev - 1 + pages.length) % pages.length)
-		if (nextSound) {
-			nextSound.muted = !!isMuted
-			nextSound.play()
+		if (nextSound.current) {
+			nextSound.current.muted = !!isMuted
+			nextSound.current.play()
 		}
 	}
 
@@ -423,7 +438,7 @@ export default function About({
 
 	const toggleFullscreen = () => {
 		const newFullscreenState = !localFullscreen
-		setLocalFullscreen(newFullscreenState)
+		setInternalFullscreen(newFullscreenState)
 
 		if (onFullscreenChange) {
 			onFullscreenChange(newFullscreenState)
@@ -445,7 +460,7 @@ export default function About({
 					<motion.div
 						key="fullscreen"
 						ref={swipeRef}
-						className="fixed lg:inset-12 inset-0 z-[100] bg-gradient-to-b from-[#c85825]/80 to-[#a04b26]/80 backdrop-blur-sm lg:rounded-3xl overflow-hidden shadow-xl"
+						className="fixed lg:inset-12 inset-0 z-100 bg-linear-to-b from-[#c85825]/80 to-[#a04b26]/80 backdrop-blur-sm lg:rounded-3xl overflow-hidden shadow-xl"
 						initial={{ opacity: 0, scale: 0.95 }}
 						animate={{ opacity: 1, scale: 1 }}
 						exit={{ opacity: 0, scale: 0.95 }}
@@ -472,9 +487,9 @@ export default function About({
 											<button
 												onClick={() => {
 													toggleFullscreen()
-													if (closeSound) {
-														closeSound.muted = !!isMuted
-														closeSound.play()
+													if (closeSound.current) {
+														closeSound.current.muted = !!isMuted
+														closeSound.current.play()
 													}
 												}}
 												className="hidden lg:block text-white hover:text-yellow-200 transition-colors"
@@ -548,7 +563,7 @@ export default function About({
 				) : (
 					<motion.div
 						key="normal"
-						className="w-full h-[90vh] bg-gradient-to-b from-[#c85825]/80 to-[#a04b26]/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl relative"
+						className="w-full h-[90vh] bg-linear-to-b from-[#c85825]/80 to-[#a04b26]/80 backdrop-blur-sm rounded-3xl overflow-hidden shadow-xl relative"
 						initial={{ opacity: 0, scale: 0.95 }}
 						animate={{ opacity: 1, scale: 1 }}
 						exit={{ opacity: 0, scale: 0.95 }}
@@ -575,9 +590,9 @@ export default function About({
 											<button
 												onClick={() => {
 													toggleFullscreen()
-													if (openSound) {
-														openSound.muted = !!isMuted
-														openSound.play()
+													if (openSound.current) {
+														openSound.current.muted = !!isMuted
+														openSound.current.play()
 													}
 												}}
 												className="hidden lg:block text-white hover:text-yellow-200 transition-colors"

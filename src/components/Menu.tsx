@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion } from 'motion/react'
 import { cn } from '@/lib/utils'
 import Buttons from './Buttons'
@@ -17,10 +17,10 @@ export default function Menu({
 	projects: Project[]
 	builds: Build[]
 }) {
-	const [openSound, setOpenSound] = useState<HTMLAudioElement | null>(null)
-	const [closeSound, setCloseSound] = useState<HTMLAudioElement | null>(null)
-	const [moveSound, setMoveSound] = useState<HTMLAudioElement | null>(null)
-	const [projectSound, setProjectSound] = useState<HTMLAudioElement | null>(null)
+	const openSound = useRef<HTMLAudioElement | null>(null)
+	const closeSound = useRef<HTMLAudioElement | null>(null)
+	const moveSound = useRef<HTMLAudioElement | null>(null)
+	const projectSound = useRef<HTMLAudioElement | null>(null)
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const [showMenu, setShowMenu] = useState(false)
 	const [isFullscreen, setIsFullscreen] = useState(false)
@@ -55,18 +55,18 @@ export default function Menu({
 		moveAudio.volume = 0.2
 		projectAudio.volume = 0.2
 
-		setOpenSound(openAudio)
-		setCloseSound(closeAudio)
-		setMoveSound(moveAudio)
-		setProjectSound(projectAudio)
+		openSound.current = openAudio
+		closeSound.current = closeAudio
+		moveSound.current = moveAudio
+		projectSound.current = projectAudio
 	}, [])
 
 	const toggleAudio = () => {
 		setIsMuted(!isMuted)
-		if (openSound) openSound.muted = !isMuted
-		if (closeSound) closeSound.muted = !isMuted
-		if (moveSound) moveSound.muted = !isMuted
-		if (projectSound) projectSound.muted = !isMuted
+		if (openSound.current) openSound.current.muted = !isMuted
+		if (closeSound.current) closeSound.current.muted = !isMuted
+		if (moveSound.current) moveSound.current.muted = !isMuted
+		if (projectSound.current) projectSound.current.muted = !isMuted
 	}
 
 	useEffect(() => {
@@ -92,8 +92,8 @@ export default function Menu({
 	}, [isFullscreen, isAboutFullscreen, wasAboutOpen, wasProjectsOpen])
 
 	const playMoveSound = useCallback(() => {
-		moveSound?.play()
-	}, [moveSound])
+		moveSound.current?.play()
+	}, [])
 
 	const toggleProjects = () => {
 		if (isFullscreen) {
@@ -104,9 +104,9 @@ export default function Menu({
 		}
 
 		if (!isMenuOpen) {
-			openSound?.play()
+			openSound.current?.play()
 		} else {
-			closeSound?.play()
+			closeSound.current?.play()
 		}
 		setIsMenuOpen(!isMenuOpen)
 	}
@@ -120,15 +120,15 @@ export default function Menu({
 		}
 
 		if (!showMenu) {
-			openSound?.play()
+			openSound.current?.play()
 		} else {
-			closeSound?.play()
+			closeSound.current?.play()
 		}
 		setShowMenu(!showMenu)
 	}
 
 	const handleProjectClick = () => {
-		projectSound?.play()
+		projectSound.current?.play()
 	}
 
 	const handleFullscreenChange = (newFullscreenState: boolean) => {
@@ -173,23 +173,21 @@ export default function Menu({
 				<div className="flex flex-col items-center gap-4">
 					<div className="flex items-center gap-4">
 						<Link
-							href="https://github.com/Wufler"
+							href="https://me.wolfey.me"
 							target="_blank"
 							className="pointer-events-auto"
 						>
-							<h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#E67E22] via-[#F39C12] to-[#FFA07A] drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
+							<h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold bg-clip-text text-transparent bg-linear-to-r from-[#E67E22] via-[#F39C12] to-[#FFA07A] drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
 								WOLFEY
 							</h1>
 						</Link>
-						<Link href="/old" className="pointer-events-auto">
-							<Image
-								src={'/favicon.ico'}
-								width={80}
-								height={80}
-								alt="🦊"
-								className="size-16 md:size-20 relative z-10"
-							/>
-						</Link>
+						<Image
+							src={'/favicon.ico'}
+							width={80}
+							height={80}
+							alt="🦊"
+							className="size-16 md:size-20 relative z-10"
+						/>
 					</div>
 					<button onClick={toggleAudio} className="pointer-events-auto text-white">
 						{isMuted ? <VolumeOff /> : <Volume2 />}
