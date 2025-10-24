@@ -172,11 +172,7 @@ export default function Menu({
 			<div className="fixed inset-0 flex items-center justify-center z-20 pointer-events-none">
 				<div className="flex flex-col items-center gap-4">
 					<div className="flex items-center gap-4">
-						<Link
-							href="https://me.wolfey.me"
-							target="_blank"
-							className="pointer-events-auto"
-						>
+						<Link href="https://me.wolfey.me" className="pointer-events-auto">
 							<h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold bg-clip-text text-transparent bg-linear-to-r from-[#E67E22] via-[#F39C12] to-[#FFA07A] drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
 								WOLFEY
 							</h1>

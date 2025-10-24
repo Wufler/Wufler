@@ -10,7 +10,7 @@ interface UseSwipeNavigationProps {
 export function useSwipeNavigation({
     onSwipeLeft,
     onSwipeRight,
-    threshold = 300,
+    threshold = 150,
     enabled = true,
 }: UseSwipeNavigationProps) {
     const touchStartX = useRef<number | null>(null)
